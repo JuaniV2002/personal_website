@@ -7,3 +7,16 @@ document.querySelectorAll('.cta').forEach(btn => {
     });
   });
 });
+
+const downloadBtn = document.querySelector('.cta-header');
+if (downloadBtn) {
+  downloadBtn.addEventListener('click', e => {
+    e.preventDefault();
+    // ask user before downloading
+    const shouldDownload = confirm('Do you want to download my CV?');
+    if (shouldDownload) {
+      // trigger the download
+      window.location.href = downloadBtn.href;
+    }
+  });
+}
