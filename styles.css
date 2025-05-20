@@ -3,6 +3,7 @@
   --bg-card: #E8ECF2;
   --accent: #0950C3;
   --accent-light: #036beb;
+  --secondary: #b9ffcd;
   --text: #000;
   --muted: #8b98a9;
   --radius: 1.25rem;
@@ -23,6 +24,7 @@
     /* Accent colors (optional tweak for dark) */
     --accent: #3A8DFF;
     --accent-light: #6EAFFF;
+    --secondary: #004714;
     /* Shadows */
     --shadow: 0 4px 24px rgba(0,0,0,0.6);
   }
@@ -284,7 +286,7 @@ main {
   margin-bottom: 0.6em;
 }
 .tags span {
-  background: rgba(96,165,250,0.09);
+  background: var(--secondary);
   color: var(--accent);
   padding: 0.24em 0.85em;
   border-radius: 1em;
@@ -318,8 +320,10 @@ main {
 }
 
 .explore-all {
-  display: flex;
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
+  text-align: center;
   padding: 1.2em 2.4em;
 }
 
