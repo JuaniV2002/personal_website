@@ -50,6 +50,7 @@
 }
 .icon-btn:hover {
   transform: scale(1.05);
+  box-shadow: 0 8px 36px rgba(60,100,180,0.15);
 }
 .icon-btn .icon-lg {
   width: 24px;
@@ -145,6 +146,7 @@ html, body {
 }
 .cta-header:hover {
   transform: scale(1.05);
+  box-shadow: 0 8px 36px rgba(60,100,180,0.15);
 }
 .icon-download {
   width: 24px;
@@ -226,6 +228,7 @@ main {
 }
 .cta:hover {
   transform: scale(1.05);
+  box-shadow: 0 8px 36px rgba(60,100,180,0.15);
 }
 
 .projects-section {
@@ -314,6 +317,12 @@ main {
   flex-shrink: 0;
 }
 
+.explore-all {
+  display: flex;
+  justify-content: center;
+  padding: 1.2em 2.4em;
+}
+
 footer {
   text-align: center;
   color: var(--muted);
@@ -329,6 +338,7 @@ footer {
 @media (max-width: 600px) {
   .hero {
     margin: 2.5rem auto 1.5rem auto;
+    margin-top: calc(var(--header-h) + 3rem);
     padding: 0 0.5rem;
   }
   .projects-section {
