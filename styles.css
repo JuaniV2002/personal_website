@@ -424,3 +424,18 @@ footer {
     padding: 0 0.5rem;
   }
 }
+
+.icon-lg,
+.icon-download,
+.github-btn .icon-github,
+.skill-card img {
+  filter: none !important;
+}
+@media (prefers-color-scheme: dark) {
+  .icon-lg,
+  .icon-download,
+  .github-btn .icon-github,
+  .skill-card img {
+    filter: invert(1) brightness(1.1) !important;
+  }
+}
