@@ -93,7 +93,9 @@ html, body {
   align-items: center;
   justify-content: space-between;
 
-  background: var(--bg-card);
+  background-color: rgba(232, 236, 242, 0.75);  /* light‐mode RGBA */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   box-shadow:
     var(--shadow),
     0 2px 8px rgba(60, 100, 180, 0.2);
@@ -102,6 +104,11 @@ html, body {
 
   z-index: 1000;
   box-sizing: border-box;
+}
+@media (prefers-color-scheme: dark) {
+  .header {
+    background-color: rgba(30, 30, 30, 0.75);   /* dark‐mode RGBA */
+  }
 }
 
 .logo {
