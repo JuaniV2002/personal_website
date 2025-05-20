@@ -27,19 +27,39 @@
     --shadow: 0 4px 24px rgba(0,0,0,0.6);
   }
 
-  /* invert brightness on SVG icons if needed */
   .icon-lg,
   .icon-download,
   .github-btn .icon-github {
-    /* invert black → white, then tweak brightness if needed */
     filter: invert(1);
   }
-  .icon-lg {
-    width: 28px;
-    height: 28px;
-    display: inline-block;
-    transition: filter 0.18s;
-    vertical-align: middle;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--bg-card);
+  border-radius: 50%;
+  box-shadow:
+    var(--shadow),
+    0 2px 8px rgba(60, 100, 180, 0.2);
+  transition: background 0.2s, filter 0.2s, transform 0.2s;
+  margin-right: 0.55em;
+}
+.icon-btn:hover {
+  transform: scale(1.05);
+}
+.icon-btn .icon-lg {
+  width: 24px;
+  height: 24px;
+  filter: none;
+}
+
+@media (prefers-color-scheme: dark) {
+ .icon-btn .icon-lg {
+    filter: invert(1);
   }
 }
 
@@ -71,7 +91,9 @@ html, body {
   justify-content: space-between;
 
   background: var(--bg-card);
-  box-shadow: var(--shadow);
+  box-shadow:
+    var(--shadow),
+    0 2px 8px rgba(60, 100, 180, 0.2);
 
   border-radius: calc(var(--header-h) / 2);
 
@@ -110,18 +132,19 @@ html, body {
   min-height: 44px;
   box-sizing: border-box;
   padding: 0 1.5em;
-  box-shadow: var(--shadow);
+  box-shadow:
+    var(--shadow),
+    0 2px 8px rgba(60, 100, 180, 0.2);
   background: var(--accent);
   color: #fff;
   border-radius: 1.2em;
   font-weight: 700;
   text-decoration: none;
-  transition: background 0.2s, color 0.2s;
+  transition: transform 0.2s;
   line-height: 1;
 }
 .cta-header:hover {
-  background: var(--accent-light);
-  color: #fff;
+  transform: scale(1.05);
 }
 .icon-download {
   width: 24px;
@@ -195,12 +218,14 @@ main {
   font-size: 1.1rem;
   font-weight: 600;
   text-decoration: none;
-  box-shadow: var(--shadow);
-  transition: background 0.2s;
+  box-shadow:
+    var(--shadow),
+    0 2px 8px rgba(60, 100, 180, 0.2);
+  transition: transform 0.2s;
   margin-top: 1rem;
 }
 .cta:hover {
-  background: var(--accent-light);
+  transform: scale(1.05);
 }
 
 .projects-section {
@@ -221,7 +246,9 @@ main {
 .project-card {
   background: var(--bg-card);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  box-shadow:
+    var(--shadow),
+    0 2px 8px rgba(60, 100, 180, 0.2);
   padding: 2rem 1.2rem 1.3rem 1.2rem;
   display: flex;
   flex-direction: column;
