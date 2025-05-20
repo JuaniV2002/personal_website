@@ -225,7 +225,7 @@ main {
   background: var(--accent);
   color: #fff;
   padding: 0.8em 1.5em;
-  border-radius: 0.7em;
+  border-radius: 3em;
   font-size: 1.1rem;
   font-weight: 600;
   text-decoration: none;
@@ -310,7 +310,7 @@ main {
   color: #fff;
   text-decoration: none;
   padding: 0.6em 1.2em;
-  border-radius: 0.6em;
+  border-radius: 3em;
   font-weight: 500;
   font-size: 1em;
   box-shadow: var(--shadow);
