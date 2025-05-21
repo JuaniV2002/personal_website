@@ -1,6 +1,6 @@
 /* ======================
-  Theme Variables & Dark Mode
-  ====================== */
+Theme Variables & Dark Mode
+====================== */
 :root {
   --bg: #E8ECF2;
   --bg-card: #E8ECF2;
@@ -8,7 +8,7 @@
   --accent-light: #036beb;
   --secondary: #73fa9a;
   --text: #000;
-  --muted: #8b98a9;
+  --muted: #6b7280;
   --radius: 1.55rem;
   --shadow: 0 4px 24px rgba(60,100,180,0.12);
   --header-h: 90px;
@@ -47,6 +47,7 @@
     --bg: #121212;
     --bg-card: #1E1E1E;
     --text: #E8ECF2;
+    --muted: #9ca3af;
     --accent: #3A8DFF;
     --accent-light: #6EAFFF;
     --secondary: #01671e;
