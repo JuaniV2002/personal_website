@@ -1,4 +1,6 @@
-/* Root variables */
+/* ======================
+  Theme Variables & Dark Mode
+  ====================== */
 :root {
   --bg: #E8ECF2;
   --bg-card: #E8ECF2;
@@ -10,10 +12,36 @@
   --radius: 1.55rem;
   --shadow: 0 4px 24px rgba(60,100,180,0.12);
   --header-h: 90px;
-  --header-padding: 0 4rem; 
+  --header-padding: 0 4rem;
 }
 
-/* Dark theme variables and overrides */
+/* ======================
+  Skill Color Variables
+  ====================== */
+:root {
+  --skill-html: 227, 79, 38;
+  --skill-css: 41, 101, 241;
+  --skill-js: 247, 223, 30;
+  --skill-dart: 1, 117, 194;
+  --skill-flutter: 2, 86, 155;
+  --skill-php: 119, 123, 180;
+  --skill-python: 255, 212, 59;
+  --skill-shell: 78, 170, 37;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --skill-html: 255, 133, 27;
+    --skill-css: 66, 165, 245;
+    --skill-js: 255, 235, 59;
+    --skill-dart: 29, 161, 242;
+    --skill-flutter: 3, 169, 244;
+    --skill-php: 149, 117, 205;
+    --skill-python: 255, 193, 7;
+    --skill-shell: 114, 182, 72;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #121212;
@@ -21,57 +49,38 @@
     --text: #E8ECF2;
     --accent: #3A8DFF;
     --accent-light: #6EAFFF;
-    --secondary: #004714;
+    --secondary: #01671e;
     --shadow: 0 4px 24px rgba(0,0,0,0.6);
-  }
-
-  .icon-lg,
-  .icon-download,
-  .github-btn .icon-github,
-  .skill-card img,
-  .icon-btn .icon-lg {
-    filter: invert(1);
   }
 }
 
-/* Global reset and base styles */
+/* ======================
+    Base Styles
+    ====================== */
 html, body {
   margin: 0;
   padding: 0;
+  width: 100vw;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
   background: var(--bg);
   color: var(--text);
   font-family: 'Nunito', 'Inter', sans-serif;
-  scroll-behavior: smooth;
-  width: 100vw;
-  overflow-x: hidden;
 }
 
-/* Icon Button Styles */
-.icon-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  background: var(--bg-card);
-  border-radius: 50%;
-  box-shadow: var(--shadow), 0 2px 8px rgba(60, 100, 180, 0.2);
-  transition: transform 0.2s;
-  margin-right: 0.55em;
+.projects-section h2,
+.skills-section h2,
+.contact-section h2 {
+  font-size: 2.1rem;
 }
 
-.icon-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 36px rgba(60,100,180,0.15);
+h3 {
+  color: var(--accent-light);
 }
 
-.icon-btn .icon-lg {
-  width: 24px;
-  height: 24px;
-  filter: none;
-}
-
-/* HEADER */
+/* ======================
+    Component: Header
+    ====================== */
 .header {
   position: fixed;
   top: 1rem;
@@ -93,30 +102,21 @@ html, body {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  .header {
-    background-color: rgba(30, 30, 30, 0.75);
-  }
-}
-
-/* Logo styles */
 .logo {
   font-size: 1.6rem;
   font-weight: 700;
 }
+.logo-short { display: none; }
 
-.logo-short {
-  display: none;
-}
-
-/* Navigation */
 .nav {
   display: flex;
   align-items: center;
   gap: clamp(0.5rem, 3vw, 1.8rem);
 }
 
-/* Icons */
+/* ======================
+    Header Elements
+    ====================== */
 .icon-lg {
   width: 28px;
   height: 28px;
@@ -129,10 +129,9 @@ html, body {
   height: 24px;
   margin-right: 0.4em;
   vertical-align: middle;
-  filter: brightness(2.2);
+  filter: brightness(0) invert(1) !important;
 }
 
-/* CTA Button in Header */
 .cta-header {
   display: flex;
   align-items: center;
@@ -157,32 +156,17 @@ html, body {
   box-shadow: 0 8px 36px rgba(60, 100, 180, 0.15);
 }
 
-/* Header responsiveness */
-@media (max-width: 690px) {
-  .logo-full { display: none; }
-  .logo-short { display: inline; }
-
-  .cta-header span { display: none; }
-
-  .cta-header {
-    width: 44px;
-    padding: 0 0.5em;
-    gap: 0;
-  }
-
-  .icon-download {
-    margin: 0;
-  }
-}
-
-/* Main padding adjustment */
+/* ======================
+    Main Content
+    ====================== */
 main {
   margin-top: calc(var(--header-h) + 1rem);
   padding: 0 2rem 2rem;
 }
 
-/* HERO SECTION */
-
+/* ======================
+    Component: Hero Section
+    ====================== */
 .hero {
   min-height: 48vh;
   display: flex;
@@ -192,6 +176,7 @@ main {
   gap: 0.2rem;
   max-width: 1100px;
   margin: 4rem auto 2rem;
+  padding: 0 2rem;
 }
 
 .hero h1 {
@@ -206,7 +191,32 @@ main {
   max-width: 550px;
 }
 
-/* Call-to-action button */
+/* ======================
+    Buttons & Interactive Elements
+    ====================== */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-right: 0.55em;
+  background: var(--bg-card);
+  border-radius: 50%;
+  box-shadow: var(--shadow), 0 2px 8px rgba(60, 100, 180, 0.2);
+  transition: transform 0.2s;
+}
+
+.icon-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 36px rgba(60,100,180,0.15);
+}
+
+.icon-btn .icon-lg {
+  width: 24px;
+  height: 24px;
+}
+
 .cta {
   display: inline-block;
   background: var(--accent);
@@ -227,60 +237,44 @@ main {
   box-shadow: 0 8px 36px rgba(60, 100, 180, 0.15);
 }
 
-/* Accent color utility class */
 .primary {
   color: var(--accent);
 }
 
-/* PROJECTS SECTION */
-
+/* ======================
+    Component: Projects Section
+    ====================== */
 .projects-section {
   max-width: 1100px;
   margin: 2rem auto 0;
-}
-
-.projects-section h2 {
-  font-size: 2.1rem;
-  margin-bottom: 1.5rem;
+  padding: 0 2rem;
+  scroll-margin-top: calc(var(--header-h) + 1rem);
 }
 
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2rem;
+  padding-bottom: 1rem;
 }
 
-/* Project Cards */
 .project-card {
   background: var(--bg-card);
   border-radius: var(--radius);
-  box-shadow: var(--shadow), 0 2px 8px rgba(60, 100, 180, 0.2);
-  padding: 2rem 1.2rem 1.3rem;
+  box-shadow: var(--shadow);
+  padding: 0.5rem 1.2rem 1rem;
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
+  gap: 0.7rem;
   min-height: 210px;
   transition: transform 0.12s, box-shadow 0.12s;
 }
 
 .project-card:hover {
   transform: translateY(-4px) scale(1.025);
-  box-shadow: 0 8px 36px rgba(60, 100, 180, 0.15);
+  box-shadow: 0 8px 32px rgba(60, 100, 180, 0.15);
 }
 
-.project-card h3 {
-  font-size: 1.25rem;
-  color: var(--accent-light);
-  margin: 0 0 0.2em;
-}
-
-.project-card p {
-  color: var(--muted);
-  font-size: 1rem;
-  margin-bottom: 0.6em;
-}
-
-/* Tags */
 .tags {
   display: flex;
   flex-wrap: wrap;
@@ -297,7 +291,6 @@ main {
   font-weight: 600;
 }
 
-/* GitHub Button */
 .github-btn {
   display: inline-flex;
   align-items: center;
@@ -315,17 +308,11 @@ main {
   transition: background 0.2s;
 }
 
-.github-btn:hover {
-  background: var(--accent-light);
-}
-
+/* In GitHub Button styles */
 .github-btn .icon-github {
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
+  filter: brightness(0) invert(1) !important;
 }
 
-/* Explore all button container */
 .explore-all {
   display: flex;
   align-items: center;
@@ -334,17 +321,13 @@ main {
   text-align: center;
 }
 
-/* SKILLS SECTION */
-
+/* ======================
+    Component: Skills Section
+    ====================== */
 .skills-section {
   max-width: 1100px;
   margin: 3rem auto 0;
   padding: 0 clamp(1rem, 5vw, 2.5rem);
-}
-
-.skills-section h2 {
-  font-size: 2.1rem;
-  margin-bottom: 1.5rem;
 }
 
 .skills-grid {
@@ -353,7 +336,6 @@ main {
   gap: 1rem;
 }
 
-/* Skill cards */
 .skill-card {
   display: flex;
   flex-direction: column;
@@ -371,34 +353,43 @@ main {
   transition: transform 0.15s, box-shadow 0.15s;
 }
 
+/* ======================
+  Skill Card Hover Effects
+  ====================== */
 .skill-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 28px rgba(60, 100, 180, 0.12);
+  transform: translateY(-4px);
+  box-shadow: 
+    0 6px 28px rgba(var(--skill-color), 0.3),
+    0 2px 8px rgba(60, 100, 180, 0.2);
 }
+
+.skill-card[data-skill="html"] { --skill-color: var(--skill-html); }
+.skill-card[data-skill="css"] { --skill-color: var(--skill-css); }
+.skill-card[data-skill="js"] { --skill-color: var(--skill-js); }
+.skill-card[data-skill="dart"] { --skill-color: var(--skill-dart); }
+.skill-card[data-skill="flutter"] { --skill-color: var(--skill-flutter); }
+.skill-card[data-skill="php"] { --skill-color: var(--skill-php); }
+.skill-card[data-skill="python"] { --skill-color: var(--skill-python); }
+.skill-card[data-skill="shell"] { --skill-color: var(--skill-shell); }
 
 .skill-card img {
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
 }
 
-/* Dark mode adjustments */
-@media (prefers-color-scheme: dark) {
-  .skill-card {
-    box-shadow: var(--shadow), 0 2px 8px rgba(0, 0, 0, 0.4);
-  }
-}
-
-/* CONTACT SECTION */
-
+/* ======================
+  Component: Contact Section
+  ====================== */
 .contact-section {
   max-width: 1100px;
   margin: 5rem auto 1rem auto;
   padding: 0 clamp(1rem, 5vw, 2.5rem);
 }
 
-.contact-section h2 {
-  font-size: 2.1rem;
-  margin-bottom: 1rem;
+.contact-section p {
+  font-size: 1.2rem;
+  color: var(--muted);
+  max-width: 550px;
 }
 
 .contact-content {
@@ -408,14 +399,6 @@ main {
   gap: 1rem;
 }
 
-.contact-content p {
-  flex: 1;
-  font-size: 1.2rem;
-  color: var(--muted);
-  max-width: 550px;
-}
-
-/* Contact Button */
 .contact-btn {
   flex-shrink: 0;
   display: inline-flex;
@@ -435,16 +418,12 @@ main {
 .contact-btn:hover {
   transform: scale(1.05);
   background: var(--accent-light);
+  box-shadow: 0 8px 36px rgba(60, 100, 180, 0.15);
 }
 
-/* Responsive adjustments */
-@media (max-width: 600px) {
-  .contact-content {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
+/* ======================
+    Footer
+    ====================== */
 footer {
   text-align: center;
   color: var(--muted);
@@ -453,33 +432,92 @@ footer {
   padding: 0 clamp(1rem,5vw,2.5rem);
 }
 
-@media (max-width: 900px) {
-  .header {
-    padding: 0 1.2rem;
-  }
-}
-@media (max-width: 600px) {
-  .hero {
-    margin: 2.5rem auto 1.5rem auto;
-    margin-top: calc(var(--header-h) + 3rem);
-    padding: 0 0.5rem;
-  }
-  .projects-section {
-    padding: 0 0.5rem;
-  }
-}
-
-.icon-lg,
-.icon-download,
-.github-btn .icon-github,
-.skill-card img {
-  filter: none !important;
-}
+/* ======================
+    Media Queries
+    ====================== */
 @media (prefers-color-scheme: dark) {
+  .header { background-color: rgba(30, 30, 30, 0.75); }
+  
   .icon-lg,
   .icon-download,
   .github-btn .icon-github,
-  .skill-card img {
+  .skill-card img,
+  .icon-btn .icon-lg {
+    filter: invert(1) brightness(1.1);
+  }
+
+  .nav .icon-github {
     filter: invert(1) brightness(1.1) !important;
+  }
+  
+  .skill-card {
+    box-shadow: var(--shadow), 0 2px 8px rgba(0, 0, 0, 0.4);
+  }
+}
+
+@media (max-width: 900px) {
+  .header { padding: 0 1.2rem; }
+}
+
+@media (max-width: 690px) {
+  .logo-full { display: none; }
+  .logo-short { display: inline; }
+  .cta-header {
+    width: 44px;
+    padding: 0 0.5em;
+    gap: 0;
+  }
+  .cta-header span { display: none; }
+  .icon-download { margin: 0; }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    margin: 2.5rem auto 3.5rem auto;
+    margin-top: calc(var(--header-h) + 3rem);
+    padding: 0 0.5rem;
+  }
+  .projects-section { padding: 0 0.5rem; }
+  
+  .bento-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 0;
+    padding: 1rem 2rem 1.5rem;
+    margin: 0 -2rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .project-card {
+    flex: 0 0 85%;
+    scroll-snap-align: start;
+    min-height: 280px;
+    margin-right: 1.2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    border-radius: var(--radius) var(--radius);
+  }
+  
+  .contact-content { flex-direction: column; align-items: flex-start;}
+}
+
+@media (max-width: 600px), (hover: none) {
+  .project-card {
+    transition: none !important;
+  }
+  .project-card:hover {
+    transform: none !important;
+    box-shadow: var(--shadow) !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) and (max-width: 600px) {
+  .project-card {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+  }
+  .project-card:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5) !important;
   }
 }
