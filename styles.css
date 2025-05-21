@@ -525,3 +525,18 @@ footer {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5) !important;
   }
 }
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  padding: 8px;
+  background: var(--accent);
+  color: white;
+  z-index: 1001;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
