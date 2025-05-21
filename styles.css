@@ -438,7 +438,7 @@ main {
     ====================== */
 footer {
   text-align: center;
-  color: var(--muted);
+  color: var(--text);
   font-size: 1rem;
   margin: 3rem 0 1rem 0;
   padding: 0 clamp(1rem,5vw,2.5rem);
@@ -532,19 +532,4 @@ footer {
   .project-card:hover {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5) !important;
   }
-}
-
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  padding: 8px;
-  background: var(--accent);
-  color: white;
-  z-index: 1001;
-  transition: top 0.3s;
-}
-
-.skip-link:focus {
-  top: 0;
 }
