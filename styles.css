@@ -6,7 +6,7 @@
   --secondary: #73fa9a;
   --text: #000;
   --muted: #8b98a9;
-  --radius: 1.25rem;
+  --radius: 1.55rem;
   --shadow: 0 4px 24px rgba(60,100,180,0.12);
   --header-h: 90px;
   --header-padding: 0 4rem; 
@@ -241,6 +241,8 @@ main {
   box-shadow: 0 8px 36px rgba(60,100,180,0.15);
 }
 
+/* PROJECT SECTION */
+
 .projects-section {
   max-width: 1100px;
   margin: 2rem auto 0 auto;
@@ -335,7 +337,7 @@ main {
   padding: 1.2em 2.4em;
 }
 
-/* SKILLS */
+/* SKILLS SECTION*/
 .skills-section {
   max-width: 1100px;
   margin: 3rem auto 0 auto;
@@ -346,30 +348,20 @@ main {
   margin-bottom: 1.5rem;
 }
 
-/* smaller grid to fit more items */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 1rem;
 }
 
-/* tiny pill-like cards */
-/* Make room for an icon above the skill name */
 .skill-card {
-  /* switch to column layout */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 0.5em;
-
-  /* increase padding to fit icon + text */
   padding: 1em;
-
-  /* optional: enforce a min-height so all cards line up */
   min-height: 100px;
-
-  /* keep existing visuals */
   background: var(--bg-card);
   color: var(--text);
   border-radius: var(--radius);
@@ -381,7 +373,6 @@ main {
   transition: transform 0.15s, box-shadow 0.15s;
 }
 
-/* size and center the SVG icon */
 .skill-card img {
   width: 42px;
   height: 42px;
