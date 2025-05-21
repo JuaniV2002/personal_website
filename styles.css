@@ -1,3 +1,4 @@
+/* Root variables */
 :root {
   --bg: #E8ECF2;
   --bg-card: #E8ECF2;
@@ -12,31 +13,40 @@
   --header-padding: 0 4rem; 
 }
 
-/* Auto switch to dark theme when user’s system is in dark mode */
+/* Dark theme variables and overrides */
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Backgrounds */
     --bg: #121212;
     --bg-card: #1E1E1E;
-    /* Foreground text */
     --text: #E8ECF2;
-    --muted: #8b98a9;
-    /* Accent colors (optional tweak for dark) */
     --accent: #3A8DFF;
     --accent-light: #6EAFFF;
     --secondary: #004714;
-    /* Shadows */
     --shadow: 0 4px 24px rgba(0,0,0,0.6);
   }
 
   .icon-lg,
   .icon-download,
   .github-btn .icon-github,
-  .skill-card img {
+  .skill-card img,
+  .icon-btn .icon-lg {
     filter: invert(1);
   }
 }
 
+/* Global reset and base styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Nunito', 'Inter', sans-serif;
+  scroll-behavior: smooth;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Icon Button Styles */
 .icon-btn {
   display: inline-flex;
   align-items: center;
@@ -45,94 +55,84 @@
   height: 44px;
   background: var(--bg-card);
   border-radius: 50%;
-  box-shadow:
-    var(--shadow),
-    0 2px 8px rgba(60, 100, 180, 0.2);
-  transition: background 0.2s, filter 0.2s, transform 0.2s;
+  box-shadow: var(--shadow), 0 2px 8px rgba(60, 100, 180, 0.2);
+  transition: transform 0.2s;
   margin-right: 0.55em;
 }
+
 .icon-btn:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 36px rgba(60,100,180,0.15);
 }
+
 .icon-btn .icon-lg {
   width: 24px;
   height: 24px;
   filter: none;
 }
 
-@media (prefers-color-scheme: dark) {
- .icon-btn .icon-lg {
-    filter: invert(1);
-  }
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Nunito', 'Inter', Nunito, sans-serif;
-  scroll-behavior: smooth;
-  width: 100vw;
-  overflow-x: hidden;
-}
-
+/* HEADER */
 .header {
-  display: flex;
   position: fixed;
   top: 1rem;
   left: 50%;
   transform: translateX(-50%);
-
   width: 90vw;
   max-width: 1200px;
   height: var(--header-h);
-
   padding: 0 clamp(1rem, 5vw, 2.5rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  background-color: rgba(232, 236, 242, 0.75);  /* light‐mode RGBA */
+  background-color: rgba(232, 236, 242, 0.75);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  box-shadow:
-    var(--shadow),
-    0 2px 8px rgba(60, 100, 180, 0.2);
-
+  box-shadow: var(--shadow), 0 2px 8px rgba(60, 100, 180, 0.2);
   border-radius: calc(var(--header-h) / 2);
-
   z-index: 1000;
   box-sizing: border-box;
 }
+
 @media (prefers-color-scheme: dark) {
   .header {
-    background-color: rgba(30, 30, 30, 0.75);   /* dark‐mode RGBA */
+    background-color: rgba(30, 30, 30, 0.75);
   }
 }
 
+/* Logo styles */
 .logo {
   font-size: 1.6rem;
   font-weight: 700;
 }
-.logo-short { display: none; }
-.logo-full  { display: inline; }
 
+.logo-short {
+  display: none;
+}
+
+/* Navigation */
 .nav {
   display: flex;
   align-items: center;
   gap: clamp(0.5rem, 3vw, 1.8rem);
 }
 
+/* Icons */
 .icon-lg {
   width: 28px;
   height: 28px;
-  display: inline-block;
-  transition: filter 0.18s;
   vertical-align: middle;
+  transition: filter 0.18s;
 }
 
+.icon-download {
+  width: 24px;
+  height: 24px;
+  margin-right: 0.4em;
+  vertical-align: middle;
+  filter: brightness(2.2);
+}
+
+/* CTA Button in Header */
 .cta-header {
   display: flex;
   align-items: center;
@@ -140,59 +140,45 @@ html, body {
   gap: 0.55em;
   font-size: 1.08rem;
   height: 44px;
-  min-height: 44px;
-  box-sizing: border-box;
   padding: 0 1.5em;
-  box-shadow:
-    var(--shadow),
-    0 2px 8px rgba(60, 100, 180, 0.2);
   background: var(--accent);
   color: #fff;
   border-radius: 1.2em;
   font-weight: 700;
   text-decoration: none;
-  transition: transform 0.2s;
   line-height: 1;
+  box-shadow: var(--shadow), 0 2px 8px rgba(60, 100, 180, 0.2);
+  transition: transform 0.2s;
 }
+
 .cta-header:hover {
   transform: scale(1.05);
-  box-shadow: 0 8px 36px rgba(60,100,180,0.15);
+  background: var(--accent-light);
+  box-shadow: 0 8px 36px rgba(60, 100, 180, 0.15);
 }
-.icon-download {
-  width: 24px;
-  height: 24px;
-  display: inline-block;
-  margin-right: 0.4em;
-  vertical-align: middle;
-  filter: brightness(2.2);
-}
-@media (max-width: 690px) {
-  
-  .header {
-    flex-direction: row;
-  }
 
-  .logo-full  { display: none; }
+/* Header responsiveness */
+@media (max-width: 690px) {
+  .logo-full { display: none; }
   .logo-short { display: inline; }
-  
-  .cta-header span {
-    display: none;
-  }
+
+  .cta-header span { display: none; }
 
   .cta-header {
+    width: 44px;
     padding: 0 0.5em;
     gap: 0;
-    justify-content: center;
-    width: 44px;
   }
-  .cta-header .icon-download {
+
+  .icon-download {
     margin: 0;
   }
 }
 
+/* Main padding adjustment */
 main {
   margin-top: calc(var(--header-h) + 1rem);
-  padding: 0 2rem 2rem 2rem;
+  padding: 0 2rem 2rem;
 }
 
 /* HERO SECTION */
@@ -205,16 +191,13 @@ main {
   align-items: flex-start;
   gap: 1.4rem;
   max-width: 1100px;
-  margin: 4rem auto 2rem auto;
+  margin: 4rem auto 2rem;
 }
 
 .hero h1 {
   font-size: 2.8rem;
-  margin: 0 0 0;
   line-height: 1.1;
-}
-.primary {
-  color: var(--accent);
+  margin: 0;
 }
 
 .hero p {
@@ -223,6 +206,7 @@ main {
   max-width: 550px;
 }
 
+/* Call-to-action button */
 .cta {
   display: inline-block;
   background: var(--accent);
@@ -232,23 +216,29 @@ main {
   font-size: 1.1rem;
   font-weight: 600;
   text-decoration: none;
-  box-shadow:
-    var(--shadow),
-    0 2px 8px rgba(60, 100, 180, 0.2);
-  transition: transform 0.2s;
+  box-shadow: var(--shadow), 0 2px 8px rgba(60, 100, 180, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
   margin-top: 1rem;
 }
+
 .cta:hover {
   transform: scale(1.05);
-  box-shadow: 0 8px 36px rgba(60,100,180,0.15);
+  background: var(--accent-light);
+  box-shadow: 0 8px 36px rgba(60, 100, 180, 0.15);
 }
 
-/* PROJECT SECTION */
+/* Accent color utility class */
+.primary {
+  color: var(--accent);
+}
+
+/* PROJECTS SECTION */
 
 .projects-section {
   max-width: 1100px;
-  margin: 2rem auto 0 auto;
+  margin: 2rem auto 0;
 }
+
 .projects-section h2 {
   font-size: 2.1rem;
   margin-bottom: 1.5rem;
@@ -260,29 +250,28 @@ main {
   gap: 2rem;
 }
 
+/* Project Cards */
 .project-card {
   background: var(--bg-card);
   border-radius: var(--radius);
-  box-shadow:
-    var(--shadow),
-    0 2px 8px rgba(60, 100, 180, 0.2);
-  padding: 2rem 1.2rem 1.3rem 1.2rem;
+  box-shadow: var(--shadow), 0 2px 8px rgba(60, 100, 180, 0.2);
+  padding: 2rem 1.2rem 1.3rem;
   display: flex;
   flex-direction: column;
   gap: 1.1rem;
   min-height: 210px;
-  position: relative;
-  transition: transform 0.12s;
+  transition: transform 0.12s, box-shadow 0.12s;
 }
+
 .project-card:hover {
   transform: translateY(-4px) scale(1.025);
-  box-shadow: 0 8px 36px rgba(60,100,180,0.15);
+  box-shadow: 0 8px 36px rgba(60, 100, 180, 0.15);
 }
 
 .project-card h3 {
   font-size: 1.25rem;
   color: var(--accent-light);
-  margin: 0 0 0.2em 0;
+  margin: 0 0 0.2em;
 }
 
 .project-card p {
@@ -291,12 +280,14 @@ main {
   margin-bottom: 0.6em;
 }
 
+/* Tags */
 .tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5em;
   margin-bottom: 0.6em;
 }
+
 .tags span {
   background: var(--secondary);
   color: var(--accent);
@@ -306,6 +297,7 @@ main {
   font-weight: 600;
 }
 
+/* GitHub Button */
 .github-btn {
   display: inline-flex;
   align-items: center;
@@ -322,30 +314,34 @@ main {
   margin-top: auto;
   transition: background 0.2s;
 }
+
 .github-btn:hover {
   background: var(--accent-light);
 }
+
 .github-btn .icon-github {
   width: 20px;
   height: 20px;
   flex-shrink: 0;
 }
 
+/* Explore all button container */
 .explore-all {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
   padding: 1.2em 2.4em;
+  text-align: center;
 }
 
-/* SKILLS SECTION*/
+/* SKILLS SECTION */
 
 .skills-section {
   max-width: 1100px;
-  margin: 3rem auto 0 auto;
-  padding: 0 clamp(1rem,5vw,2.5rem);
+  margin: 3rem auto 0;
+  padding: 0 clamp(1rem, 5vw, 2.5rem);
 }
+
 .skills-section h2 {
   font-size: 2.1rem;
   margin-bottom: 1.5rem;
@@ -357,6 +353,7 @@ main {
   gap: 1rem;
 }
 
+/* Skill cards */
 .skill-card {
   display: flex;
   flex-direction: column;
@@ -368,56 +365,57 @@ main {
   background: var(--bg-card);
   color: var(--text);
   border-radius: var(--radius);
-  box-shadow:
-    var(--shadow),
-    0 2px 8px rgba(60,100,180,0.2);
+  box-shadow: var(--shadow), 0 2px 8px rgba(60, 100, 180, 0.2);
   font-size: 0.9rem;
   font-weight: 600;
   transition: transform 0.15s, box-shadow 0.15s;
 }
 
+.skill-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(60, 100, 180, 0.12);
+}
+
 .skill-card img {
   width: 42px;
   height: 42px;
-  filter: none;
-}
-.skill-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 28px rgba(60,100,180,0.12);
 }
 
-/* dark mode tweak */
+/* Dark mode adjustments */
 @media (prefers-color-scheme: dark) {
   .skill-card {
-    box-shadow:
-      var(--shadow),
-      0 2px 8px rgba(0,0,0,0.4);
+    box-shadow: var(--shadow), 0 2px 8px rgba(0, 0, 0, 0.4);
   }
 }
 
-/* CONTACT */
+/* CONTACT SECTION */
 
 .contact-section {
   max-width: 1100px;
   margin: 5rem auto;
   padding: 0 clamp(1rem, 5vw, 2.5rem);
 }
+
 .contact-section h2 {
   font-size: 2.1rem;
   margin-bottom: 1rem;
 }
+
 .contact-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
 }
+
 .contact-content p {
   flex: 1;
   font-size: 1.2rem;
   color: var(--muted);
   max-width: 550px;
 }
+
+/* Contact Button */
 .contact-btn {
   flex-shrink: 0;
   display: inline-flex;
@@ -430,17 +428,16 @@ main {
   font-weight: 600;
   text-decoration: none;
   border-radius: 3em;
-  box-shadow:
-    var(--shadow),
-    0 2px 8px rgba(60,100,180,0.2);
+  box-shadow: var(--shadow), 0 2px 8px rgba(60, 100, 180, 0.2);
   transition: transform 0.2s, background 0.2s;
 }
+
 .contact-btn:hover {
   transform: scale(1.05);
   background: var(--accent-light);
 }
 
-/* responsive stack */
+/* Responsive adjustments */
 @media (max-width: 600px) {
   .contact-content {
     flex-direction: column;
