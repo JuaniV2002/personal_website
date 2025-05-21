@@ -308,6 +308,10 @@ main {
   transition: background 0.2s;
 }
 
+.github-btn:hover {
+  background: var(--accent-light);
+}
+
 /* In GitHub Button styles */
 .github-btn .icon-github {
   filter: brightness(0) invert(1) !important;
