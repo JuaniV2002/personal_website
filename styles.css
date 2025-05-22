@@ -439,27 +439,19 @@ main {
   gap: 0.5em;
   padding: 1em;
   min-height: 100px;
-  background: 
-    linear-gradient(
-      to bottom right,
-      rgba(255, 255, 255, 0.6) 0%,
-      rgba(255, 255, 255, 0.2) 100%
-    );
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  background-image: 
-    linear-gradient(
-      to bottom right,
-      rgba(255, 255, 255, 0.1) 0%,
-      rgba(255, 255, 255, 0.05) 100%
-    ),
-    url('data:image/svg+xml,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.15"/></svg>');
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   color: var(--text);
   border-radius: var(--radius);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 
-    0 4px 24px rgba(0, 0, 0, 0.05),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.2),
+    0 4px 24px rgba(0, 0, 0, 0.03),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   font-size: 0.9rem;
   font-weight: 600;
@@ -469,9 +461,14 @@ main {
 .skill-card:hover {
   transform: translateY(-4px);
   box-shadow: 
-    0 6px 28px rgba(var(--skill-color), 0.3),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.3),
+    0 6px 28px 2px rgba(var(--skill-color), 0.4),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.25),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  /* background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  ); */
 }
 
 .skill-card[data-skill="html"] { --skill-color: var(--skill-html); }
@@ -618,16 +615,16 @@ footer {
   .skill-card {
     background: linear-gradient(
       to bottom right,
-      rgba(46, 46, 46, 0.4) 0%,
-      rgba(32, 32, 32, 0.2) 100%
+      rgba(46, 46, 46, 0.3) 0%,
+      rgba(32, 32, 32, 0.15) 100%
     );
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .skill-card:hover,
   .project-card:hover {
     box-shadow: 
-      0 6px 28px rgba(var(--skill-color), 0.4),
+      0 6px 28px 3px rgba(var(--skill-color), 0.5),
       inset 0 -1px 0 rgba(255, 255, 255, 0.15),
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
