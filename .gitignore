@@ -1,0 +1,15 @@
+# macOS system file
+.DS_Store
+
+# Node dependencies (if using Node)
+node_modules/
+
+# Build outputs (optional, adjust as needed)
+dist/
+build/
+
+# Logs
+*.log
+
+# System junk
+Thumbs.db
