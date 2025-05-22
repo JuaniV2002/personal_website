@@ -19,26 +19,26 @@ Theme Variables & Dark Mode
   Skill Color Variables
   ====================== */
 :root {
-  --skill-html: 227, 79, 38;
-  --skill-css: 41, 101, 241;
-  --skill-js: 247, 223, 30;
-  --skill-dart: 1, 117, 194;
-  --skill-flutter: 2, 86, 155;
-  --skill-php: 119, 123, 180;
-  --skill-python: 255, 212, 59;
-  --skill-shell: 78, 170, 37;
+  --skill-html: 255, 68, 0;
+  --skill-css: 0, 92, 255;
+  --skill-js: 255, 225, 40;
+  --skill-dart: 0, 142, 255;
+  --skill-flutter: 0, 115, 230;
+  --skill-php: 102, 108, 255;
+  --skill-python: 255, 219, 0;
+  --skill-shell: 0, 200, 64;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --skill-html: 255, 133, 27;
-    --skill-css: 66, 165, 245;
-    --skill-js: 255, 235, 59;
-    --skill-dart: 29, 161, 242;
-    --skill-flutter: 3, 169, 244;
-    --skill-php: 149, 117, 205;
-    --skill-python: 255, 193, 7;
-    --skill-shell: 114, 182, 72;
+    --skill-html: 255, 102, 0;
+    --skill-css: 0, 145, 255;
+    --skill-js: 255, 241, 60;
+    --skill-dart: 0, 174, 255;
+    --skill-flutter: 0, 188, 255;
+    --skill-php: 120, 90, 255;
+    --skill-python: 255, 204, 0;
+    --skill-shell: 90, 210, 60;
   }
 }
 
