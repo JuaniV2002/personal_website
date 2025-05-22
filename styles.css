@@ -375,7 +375,7 @@ main {
 
 .tags span {
   background: var(--secondary);
-  color: var(--accent);
+  color: var(--text);
   padding: 0.24em 0.85em;
   border-radius: 1em;
   font-size: 0.89em;
