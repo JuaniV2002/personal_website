@@ -416,6 +416,11 @@ main {
   text-align: center;
 }
 
+.explore-all .cta {
+  padding: 0.8em 1.5em;
+  border-radius: 3em;
+}
+
 /* ======================
     Component: Skills Section
     ====================== */
@@ -464,11 +469,6 @@ main {
     0 6px 28px 2px rgba(var(--skill-color), 0.4),
     inset 0 -1px 0 rgba(255, 255, 255, 0.25),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  /* background: linear-gradient(
-    to bottom right,
-    rgba(255, 255, 255, 0.25) 0%,
-    rgba(255, 255, 255, 0.05) 100%
-  ); */
 }
 
 .skill-card[data-skill="html"] { --skill-color: var(--skill-html); }
