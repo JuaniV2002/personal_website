@@ -6,7 +6,7 @@ Theme Variables & Dark Mode
   --bg-card: #E8ECF2;
   --accent: #0950C3;
   --accent-light: #036beb;
-  --secondary: #66E299;
+  --secondary: #51ff84;
   --text: #000;
   --muted: #6b7280;
   --accent-rgb: 9, 80, 195;
@@ -54,7 +54,7 @@ Theme Variables & Dark Mode
     --accent-light-rgb: 3, 107, 235;
     --accent: #3A8DFF;
     --accent-light: #6EAFFF;
-    --secondary: #8ef9ac;
+    --secondary: #43e649;
     --shadow: 0 4px 24px rgba(0,0,0,0.6);
   }
 }
