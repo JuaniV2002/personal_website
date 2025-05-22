@@ -6,7 +6,7 @@ Theme Variables & Dark Mode
   --bg-card: #E8ECF2;
   --accent: #0950C3;
   --accent-light: #036beb;
-  --secondary: #8ef9ac;
+  --secondary: #66E299;
   --text: #000;
   --muted: #6b7280;
   --radius: 1.55rem;
@@ -79,7 +79,7 @@ section h1,
 article h1,
 aside h1,
 nav h1 {
-  font-size: 2.8rem;
+  font-size: 2.8rem !important;
 }
 
 h3 {
