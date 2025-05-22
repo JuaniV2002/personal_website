@@ -1,41 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!-- Metadata -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Juani's Website</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
-    <meta name="description" content="CS student and full-stack developer specializing in educational tools, Flutter apps, and modern web interfaces. View portfolio projects and technical skills." />
-    <meta name="keywords" content="web development, Flutter, educational technology, CS student, portfolio, JavaScript, Python, PHP" />
-    <meta property="og:title" content="Juani's Website" />
-    <meta property="og:description" content="Portfolio of Juani Villanueva: CS student, full-stack developer, and builder of sleek educational platforms." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://juani.me" />
-    <meta property="og:image" content="https://juani.me/assets/og-image.png" />
-    <meta property="og:image:width" content="1352" />
-    <meta property="og:image:height" content="665" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://juani.me/assets/og-image.png" />
-    <link rel="canonical" href="https://juani.me" />
+    <meta name="description" content="CS student and full-stack developer specializing in Moodle, Flutter apps, and modern web interfaces. View portfolio projects and technical skills.">
+    <meta name="keywords" content="web development, Flutter, educational technology, CS student, portfolio, JavaScript, Python, PHP">
   
-    <!-- Fonts + Styles -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" media="print" onload="this.media='all'" />
+    <!-- Canonical -->
+    <link rel="canonical" href="https://juani.me">
+  
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  
+    <!-- Social OpenGraph -->
+    <meta property="og:title" content="Juani's Website">
+    <meta property="og:description" content="Portfolio of Juani Villanueva: CS student, full-stack developer, and builder of sleek educational platforms.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://juani.me">
+    <meta property="og:image" content="https://juani.me/assets/og-image.png">
+    <meta property="og:image:width" content="1352">
+    <meta property="og:image:height" content="665">
+  
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://juani.me/assets/og-image.png">
+  
+    <!-- Fonts: Preconnect, Preload, Stylesheet -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" media="print" onload="this.media='all'">
     <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap">
     </noscript>
-    <link rel="preload" as="style" href="styles.css" />
-    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="styles.css" /></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
   
-    <!-- Scripts -->
-    <link rel="preload" as="script" href="main.js" />
+    <!-- Styles: Preload + Stylesheet -->
+    <link rel="preload" as="style" href="styles.css">
+    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+    <noscript>
+      <link rel="stylesheet" href="styles.css">
+    </noscript>
+    <link rel="stylesheet" href="styles.css">
+  
+    <!-- JS: Preload + Script -->
+    <link rel="preload" as="script" href="main.js">
     <script src="main.js" defer></script>
   
-    <!-- Rich Results - Structured Data -->
+    <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -43,26 +58,13 @@
         "name": "Juani Villanueva",
         "jobTitle": "CS student, Moodle developer",
         "url": "https://juani.me",
-        "image": "https://juani.me/assets/profile.jpg",
-        "description": "CS student and full-stack developer specializing in Moodle, Flutter apps, and modern web interfaces.",
         "sameAs": [
           "https://github.com/JuaniV2002",
           "https://linkedin.com/in/juaniVillanueva"
         ],
-        "alumniOf": {
-          "@type": "CollegeOrUniversity",
-          "name": "Universidad Nacional de Río Cuarto"
-        },
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Facultad de Ciencias Económicas - UNRC"
-        },
-        "knowsAbout": [
-          "HTML", "CSS", "JavaScript", "Dart", "Flutter", "PHP", "Python", "Shell scripting", "Moodle development"
-        ]
+        "description": "CS student and full-stack developer specializing in Moodle, Flutter apps, and modern web interfaces. View portfolio projects and technical skills."
       }
     </script>
-  
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -76,7 +78,6 @@
         }
       }
     </script>
-  
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -97,6 +98,107 @@
         ]
       }
     </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Ecosistema FCE PWA",
+        "operatingSystem": "Web, Android, iOS",
+        "applicationCategory": "DeveloperApplication",
+        "description": "A Progressive Web App designed for the Facultad de Ciencias Económicas at UNRC, integrating Moodle content and providing a seamless mobile-friendly interface for students and staff.",
+        "programmingLanguage": "JS, HTML, JSON",
+        "url": "https://github.com/JuaniV2002/moodle_welcome_message_plugin",
+        "author": {
+          "@type": "Person",
+          "name": "Juani Villanueva"
+        }
+      }
+      </script>
+      
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Moodle Welcome Message",
+        "operatingSystem": "Web",
+        "applicationCategory": "DeveloperApplication",
+        "description": "A custom Moodle plugin that automatically sends a welcome email, web notification, and mobile push notification to new users upon enrollment—fully integrated with the Moodle App.",
+        "programmingLanguage": "PHP, CSS",
+        "url": "https://github.com/JuaniV2002/EcosistemaFCE_PWA",
+        "author": {
+          "@type": "Person",
+          "name": "Juani Villanueva"
+        }
+      }
+      </script>
+      
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Meals App",
+        "operatingSystem": "Android, iOS",
+        "applicationCategory": "LifestyleApplication",
+        "description": "A cross-platform Dart/Flutter app for browsing, categorizing, and favoriting meal recipes. Supports filtering by dietary preferences and displays recipe details.",
+        "programmingLanguage": "Flutter, Dart",
+        "url": "https://github.com/JuaniV2002/meals_app",
+        "author": {
+          "@type": "Person",
+          "name": "Juani Villanueva"
+        }
+      }
+      </script>
+      
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Expenses App",
+        "operatingSystem": "Android, iOS",
+        "applicationCategory": "FinanceApplication",
+        "description": "A Flutter-based app for tracking daily expenses. Users can log spending by category and view a chart to visualize their financial habits.",
+        "programmingLanguage": "Flutter, Dart",
+        "url": "https://github.com/JuaniV2002/expenses_app",
+        "author": {
+          "@type": "Person",
+          "name": "Juani Villanueva"
+        }
+      }
+      </script>
+      
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Distributed Lamport chat",
+        "operatingSystem": "Linux, macOS",
+        "applicationCategory": "DeveloperApplication",
+        "description": "A distributed messaging system implementing Lamport clocks and total order broadcast using the ISIS algorithm. Designed for academic exploration of distributed systems behavior.",
+        "programmingLanguage": "Python, Shell",
+        "url": "https://github.com/Uriel-Gz/distributed_lamport_chat",
+        "author": {
+          "@type": "Person",
+          "name": "Juani Villanueva"
+        }
+      }
+      </script>
+      
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Etch-A-Sketch",
+        "operatingSystem": "Web",
+        "applicationCategory": "EntertainmentApplication",
+        "description": "A browser-based digital Etch-A-Sketch clone built with JavaScript, HTML, and CSS. Features responsive controls and a pixel grid drawing interface.",
+        "programmingLanguage": "CSS, JS, HTML",
+        "url": "https://github.com/JuaniV2002/etch_a_sketch",
+        "author": {
+          "@type": "Person",
+          "name": "Juani Villanueva"
+        }
+      }
+      </script>
   </head>
 <body>
   <header class="header" role="banner">
