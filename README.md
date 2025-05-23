@@ -12,7 +12,7 @@ This project showcases my journey as a Computer Science student and web develope
 - **Modern Glassmorphism Design**  
   Sleek, frosted-glass cards, headers, and buttons throughout—delivering a fresh, high-end, and accessible look.
 
-- **100% Responsive**
+- **100% Responsive**  
   Crafted from the ground up to look and work perfectly on any device—desktop, tablet, or mobile. No breakpoints left behind.
 
 - **Consistent Design Language**  
