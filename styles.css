@@ -17,32 +17,6 @@ Theme Variables & Dark Mode
   --header-padding: 0 4rem;
 }
 
-/* ======================
-  Skill Color Variables
-  ====================== */
-:root {
-  --skill-html: 241, 101, 42;
-  --skill-css: 102, 51, 153;
-  --skill-js: 247, 223, 28;
-  --skill-flutter: 95, 200, 248;
-  --skill-moodle: 249, 128, 18;
-  --skill-php: 119 ,123, 179;
-  --skill-python: 255, 230, 108;
-  --skill-shell: 0, 200, 64;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --skill-html: 241, 101, 42;
-    --skill-css: 102, 51, 153;
-    --skill-js: 247, 223, 28;
-    --skill-flutter: 95, 200, 248;
-    --skill-moodle: 249, 128, 18;
-    --skill-php: 119 ,123, 179;
-    --skill-python: 255, 230, 108;
-    --skill-shell: 90, 210, 60;
-  }
-}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -56,6 +30,33 @@ Theme Variables & Dark Mode
     --accent-light: #6EAFFF;
     --secondary: #3d4d66;
     --shadow: 0 4px 24px rgba(0,0,0,0.6);
+  }
+}
+
+/* ======================
+  Skill Color Variables
+  ====================== */
+:root {
+  --skill-html: 241, 101, 42;
+  --skill-css: 102, 51, 153;
+  --skill-js: 247, 223, 28;
+  --skill-flutter: 95, 200, 248;
+  --skill-moodle: 249, 128, 18;
+  --skill-java: 82, 130, 161;
+  --skill-python: 255, 230, 108;
+  --skill-shell: 0, 200, 64;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --skill-html: 241, 101, 42;
+    --skill-css: 102, 51, 153;
+    --skill-js: 247, 223, 28;
+    --skill-flutter: 95, 200, 248;
+    --skill-moodle: 249, 128, 18;
+    --skill-java: 82, 130, 161;
+    --skill-python: 255, 230, 108;
+    --skill-shell: 90, 210, 60;
   }
 }
 
@@ -91,8 +92,14 @@ h3 {
 }
 
 /* ======================
-    Component: Header
-    ====================== */
+Component: Header
+====================== */
+.header * {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
 .header {
   position: fixed;
   top: 1rem;
@@ -122,6 +129,9 @@ h3 {
   z-index: 1000;
   box-sizing: border-box;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none; */
   
   /* Glass texture */
   background-image: 
@@ -300,6 +310,9 @@ main {
     inset 0 -1px 0 rgba(255, 255, 255, 0.25),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }
 
 .cta:hover {
@@ -380,6 +393,9 @@ main {
   border-radius: 1em;
   font-size: 0.89em;
   font-weight: 600;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }
 
 .github-btn {
@@ -407,6 +423,9 @@ main {
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
   margin-top: auto;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }
 
 .github-btn:hover {
@@ -448,6 +467,9 @@ main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 1rem;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }
 
 .skill-card {
@@ -490,7 +512,7 @@ main {
 .skill-card[data-skill="js"] { --skill-color: var(--skill-js); }
 .skill-card[data-skill="flutter"] { --skill-color: var(--skill-flutter); }
 .skill-card[data-skill="moodle"] { --skill-color: var(--skill-moodle); }
-.skill-card[data-skill="php"] { --skill-color: var(--skill-php); }
+.skill-card[data-skill="java"] { --skill-color: var(--skill-java); }
 .skill-card[data-skill="python"] { --skill-color: var(--skill-python); }
 .skill-card[data-skill="shell"] { --skill-color: var(--skill-shell); }
 
@@ -547,6 +569,9 @@ main {
     inset 0 -1px 0 rgba(255, 255, 255, 0.25),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }
 
 .contact-btn:hover {
