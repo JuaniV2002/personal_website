@@ -26,12 +26,12 @@ This project showcases my journey as a Computer Science student and web develope
 
 - **SEO & Accessibility First**  
   - [x] **100/100 Lighthouse scores** (Performance, Accessibility, Best Practices, SEO)  
-  - ARIA labels, semantic HTML; to be usable by everyone.
+  - ARIA labels and semantic HTML, to be usable by everyone.
   - Open Graph & Twitter Card metadata for rich sharing.
 
 - **Zero Frameworks**  
   No React, Vue, or Svelte.  
-  Just pure, hand-crafted HTML, CSS, and JavaScript—lean, portable, and fast.
+  Just pure, hand-crafted HTML, CSS, and JavaScript. Lean, portable, and fast.
 
 ---
 
