@@ -709,7 +709,7 @@ footer {
   }
   
   .project-card {
-    flex: 0 0 85%;
+    flex: 0 0 82%;
     scroll-snap-align: none;
     min-height: 280px;
     margin-right: 1.2rem;
