@@ -276,7 +276,10 @@ main {
 
 .icon-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 8px 36px rgba(60,100,180,0.15);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.15),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .icon-btn .icon-lg {
