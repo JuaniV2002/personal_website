@@ -108,7 +108,7 @@ Component: Header
   width: 90vw;
   max-width: 1200px;
   height: var(--header-h);
-  padding: 0 clamp(1rem, 5vw, 2.5rem);
+  padding: clamp(0.75rem, 3vw, 1.5rem) clamp(0.75rem, 3vw, 1.5rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -129,9 +129,6 @@ Component: Header
   z-index: 1000;
   box-sizing: border-box;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  /* user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none; */
   
   /* Glass texture */
   background-image: 
@@ -355,23 +352,36 @@ main {
 .project-card {
   background: linear-gradient(
     to bottom right,
-    rgba(255, 255, 255, 0.35) 0%,
-    rgba(255, 255, 255, 0.2) 100%
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(255, 255, 255, 0.25) 100%
   );
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: var(--radius);
-  border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 1.5rem 1.2rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   min-height: 210px;
   box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.05),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    0 6px 24px rgba(0, 0, 0, 0.03),
+    inset 0 -0.5px 0 rgba(255, 255, 255, 0.35),
+    inset 0 0.5px 0 rgba(255, 255, 255, 0.25);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.1) 0%,
+    rgba(255,255,255,0.01) 100%
+  );
 }
 
 .project-card:hover {
