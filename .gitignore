@@ -1,6 +1,5 @@
 # macOS system file
-.DS_Store
-/assets/.DS_Store
+*.DS_Store
 
 # Node dependencies (if using Node)
 node_modules/
