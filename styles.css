@@ -3,7 +3,6 @@ Theme Variables & Dark Mode
 ====================== */
 :root {
   --bg: #E8ECF2;
-  --bg-card: #E8ECF2;
   --accent: #0950C3;
   --accent-light: #036beb;
   --secondary: #99a9c2;
@@ -14,14 +13,12 @@ Theme Variables & Dark Mode
   --radius: 1.55rem;
   --shadow: 0 4px 24px rgba(60,100,180,0.12);
   --header-h: 90px;
-  --header-padding: 0 4rem;
 }
 
 
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #121212;
-    --bg-card: #1E1E1E;
     --text: #E8ECF2;
     --muted: #9ca3af;
     --accent-rgb: 9, 80, 195;
@@ -170,7 +167,12 @@ Component: Header
   filter: brightness(0) invert(1) !important;
 }
 
-.cta-header {
+
+/* Shared CTA button styles */
+.cta,
+.cta-header,
+.contact-btn,
+.github-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -191,21 +193,42 @@ Component: Header
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 
+  box-shadow:
     0 4px 24px rgba(0, 0, 0, 0.1),
     inset 0 -1px 0 rgba(255, 255, 255, 0.25),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }
 
-.cta-header:hover {
-  transform: scale(1.05);
+/* GitHub button tweaks */
+.github-btn {
+  gap: 0.5em;
+  padding: 0.6em 1.2em;
+  border-radius: 3em;
+  font-size: 1em;
+  font-weight: 500;
+  margin-top: auto;
+}
+
+.cta-header:hover,
+.cta:hover,
+.contact-btn:hover,
+.github-btn:hover {
   background: linear-gradient(
     to bottom right,
     rgba(var(--accent-light-rgb), 0.9) 0%,
     rgba(var(--accent-rgb), 0.7) 100%
   );
-  box-shadow: 
+}
+
+.cta-header:hover,
+.cta:hover,
+.contact-btn:hover {
+  transform: scale(1.05);
+  box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.15),
     inset 0 -1px 0 rgba(255, 255, 255, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
@@ -219,6 +242,14 @@ main {
   padding: 0 2rem 2rem;
 }
 
+/* Shared layout width */
+.hero,
+.projects-section,
+.skills-section,
+.contact-section {
+  max-width: 1100px;
+}
+
 /* ======================
     Component: Hero Section
     ====================== */
@@ -229,7 +260,6 @@ main {
   justify-content: center;
   align-items: flex-start;
   gap: 0.2rem;
-  max-width: 1100px;
   margin: 4rem auto 2rem;
   padding: 0 2rem;
 }
@@ -284,49 +314,6 @@ main {
   height: 24px;
 }
 
-.cta {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.55em;
-  font-size: 1.08rem;
-  height: 44px;
-  padding: 0 1.5em;
-  background: linear-gradient(
-    to bottom right,
-    rgba(var(--accent-rgb), 0.9) 0%,
-    rgba(var(--accent-light-rgb), 0.7) 100%
-  );
-  color: #fff;
-  border-radius: 1.2em;
-  font-weight: 700;
-  text-decoration: none;
-  line-height: 1;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 
-    0 4px 24px rgba(0, 0, 0, 0.1),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-}
-
-.cta:hover {
-  transform: scale(1.05);
-  background: linear-gradient(
-    to bottom right,
-    rgba(var(--accent-light-rgb), 0.9) 0%,
-    rgba(var(--accent-rgb), 0.7) 100%
-  );
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.15),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
 
 .primary {
   color: var(--accent);
@@ -336,7 +323,6 @@ main {
     Component: Projects Section
     ====================== */
 .projects-section {
-  max-width: 1100px;
   margin: 2rem auto 0;
   padding: 0 2rem;
   scroll-margin-top: calc(var(--header-h) + 1rem);
@@ -411,43 +397,6 @@ main {
   -moz-user-select: none;
 }
 
-.github-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5em;
-  background: linear-gradient(
-    to bottom right,
-    rgba(var(--accent-rgb), 0.9) 0%,
-    rgba(var(--accent-light-rgb), 0.7) 100%
-  );
-  color: #fff;
-  text-decoration: none;
-  padding: 0.6em 1.2em;
-  border-radius: 3em;
-  font-weight: 500;
-  font-size: 1em;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 
-    0 4px 24px rgba(0, 0, 0, 0.1),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  margin-top: auto;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-}
-
-.github-btn:hover {
-  background: linear-gradient(
-    to bottom right,
-    rgba(var(--accent-light-rgb), 0.9) 0%,
-    rgba(var(--accent-rgb), 0.7) 100%
-  );
-}
 
 /* In GitHub Button styles */
 .github-btn .icon-github {
@@ -471,7 +420,6 @@ main {
     Component: Skills Section
     ====================== */
 .skills-section {
-  max-width: 1100px;
   margin: 3rem auto 0;
   padding: 0 clamp(1rem, 5vw, 2.5rem);
 }
@@ -538,7 +486,6 @@ main {
   Component: Contact Section
   ====================== */
 .contact-section {
-  max-width: 1100px;
   margin: 5rem auto 1rem auto;
   padding: 0 clamp(1rem, 5vw, 2.5rem);
 }
@@ -556,49 +503,6 @@ main {
   gap: 1rem;
 }
 
-.contact-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.55em;
-  font-size: 1.08rem;
-  height: 44px;
-  padding: 0 1.5em;
-  background: linear-gradient(
-    to bottom right,
-    rgba(var(--accent-rgb), 0.9) 0%,
-    rgba(var(--accent-light-rgb), 0.7) 100%
-  );
-  color: #fff;
-  border-radius: 1.2em;
-  font-weight: 700;
-  text-decoration: none;
-  line-height: 1;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 
-    0 4px 24px rgba(0, 0, 0, 0.1),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-}
-
-.contact-btn:hover {
-  transform: scale(1.05);
-  background: linear-gradient(
-    to bottom right,
-    rgba(var(--accent-light-rgb), 0.9) 0%,
-    rgba(var(--accent-rgb), 0.7) 100%
-  );
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.15),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
 
 /* ======================
     Footer
