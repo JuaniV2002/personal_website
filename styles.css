@@ -2,31 +2,30 @@
 Theme Variables & Dark Mode
 ====================== */
 :root {
-  --bg: #E8ECF2;
-  --accent: #0950C3;
+  --bg: #e8ecf2;
+  --accent: #0950c3;
   --accent-light: #036beb;
   --secondary: #99a9c2;
   --text: #000;
-  --muted: #3F4146;
+  --muted: #3f4146;
   --accent-rgb: 9, 80, 195;
   --accent-light-rgb: 3, 107, 235;
   --radius: 1.55rem;
-  --shadow: 0 4px 24px rgba(60,100,180,0.12);
+  --shadow: 0 4px 24px rgba(60, 100, 180, 0.12);
   --header-h: 90px;
 }
-
 
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #121212;
-    --text: #E8ECF2;
+    --text: #e8ecf2;
     --muted: #9ca3af;
     --accent-rgb: 9, 80, 195;
     --accent-light-rgb: 3, 107, 235;
-    --accent: #3A8DFF;
-    --accent-light: #6EAFFF;
+    --accent: #3a8dff;
+    --accent-light: #6eafff;
     --secondary: #3d4d66;
-    --shadow: 0 4px 24px rgba(0,0,0,0.6);
+    --shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
   }
 }
 
@@ -60,7 +59,8 @@ Theme Variables & Dark Mode
 /* ======================
     Base Styles
     ====================== */
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100vw;
@@ -68,7 +68,7 @@ html, body {
   scroll-behavior: smooth;
   background: var(--bg);
   color: var(--text);
-  font-family: 'Nunito', 'Inter', sans-serif;
+  font-family: "Nunito", "Inter", sans-serif;
 }
 
 .skip-link {
@@ -125,12 +125,11 @@ Component: Header
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: 
-    linear-gradient(
-      to bottom right,
-      rgba(255, 255, 255, 0.6) 0%,
-      rgba(255, 255, 255, 0.2) 100%
-    );
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -142,9 +141,9 @@ Component: Header
   z-index: 1000;
   box-sizing: border-box;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  
+
   /* Glass texture */
-  background-image: 
+  background-image:
     linear-gradient(
       to bottom right,
       rgba(255, 255, 255, 0.1) 0%,
@@ -157,7 +156,9 @@ Component: Header
   font-size: 1.6rem;
   font-weight: 700;
 }
-.logo-short { display: none; }
+.logo-short {
+  display: none;
+}
 
 .nav {
   display: flex;
@@ -182,7 +183,6 @@ Component: Header
   vertical-align: middle;
   filter: brightness(0) invert(1) !important;
 }
-
 
 /* Shared CTA button styles */
 .cta,
@@ -305,7 +305,7 @@ main {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 50%;
-  box-shadow: 
+  box-shadow:
     0 4px 24px rgba(0, 0, 0, 0.05),
     inset 0 -1px 0 rgba(255, 255, 255, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -313,8 +313,8 @@ main {
 }
 
 .icon-btn:hover {
-  transform: scale(1.10);
-  box-shadow: 
+  transform: scale(1.1);
+  box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.15),
     inset 0 -1px 0 rgba(255, 255, 255, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
@@ -324,7 +324,6 @@ main {
   width: 24px;
   height: 24px;
 }
-
 
 .primary {
   color: var(--accent);
@@ -361,7 +360,7 @@ main {
   flex-direction: column;
   gap: 1rem;
   min-height: 210px;
-  box-shadow: 
+  box-shadow:
     0 6px 24px rgba(0, 0, 0, 0.03),
     inset 0 -0.5px 0 rgba(255, 255, 255, 0.35),
     inset 0 0.5px 0 rgba(255, 255, 255, 0.25);
@@ -369,21 +368,21 @@ main {
 }
 
 .project-card::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   border-radius: var(--radius);
   pointer-events: none;
   background: linear-gradient(
     120deg,
-    rgba(255,255,255,0.1) 0%,
-    rgba(255,255,255,0.01) 100%
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.01) 100%
   );
 }
 
 .project-card:hover {
   transform: translateY(-4px) scale(1.02);
-  box-shadow: 
+  box-shadow:
     0 12px 40px rgba(60, 100, 180, 0.15),
     inset 0 -1px 0 rgba(255, 255, 255, 0.35),
     inset 0 1px 0 rgba(255, 255, 255, 0.25);
@@ -407,7 +406,6 @@ main {
   -webkit-user-select: none;
   -moz-user-select: none;
 }
-
 
 /* In GitHub Button styles */
 .github-btn .icon-github {
@@ -462,7 +460,7 @@ main {
   color: var(--text);
   border-radius: var(--radius);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 
+  box-shadow:
     0 4px 24px rgba(0, 0, 0, 0.03),
     inset 0 -1px 0 rgba(255, 255, 255, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -473,20 +471,36 @@ main {
 
 .skill-card:hover {
   transform: translateY(-4px);
-  box-shadow: 
+  box-shadow:
     0 6px 28px 2px rgba(var(--skill-color), 0.4),
     inset 0 -1px 0 rgba(255, 255, 255, 0.25),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-.skill-card[data-skill="html"] { --skill-color: var(--skill-html); }
-.skill-card[data-skill="css"] { --skill-color: var(--skill-css); }
-.skill-card[data-skill="js"] { --skill-color: var(--skill-js); }
-.skill-card[data-skill="flutter"] { --skill-color: var(--skill-flutter); }
-.skill-card[data-skill="moodle"] { --skill-color: var(--skill-moodle); }
-.skill-card[data-skill="java"] { --skill-color: var(--skill-java); }
-.skill-card[data-skill="python"] { --skill-color: var(--skill-python); }
-.skill-card[data-skill="shell"] { --skill-color: var(--skill-shell); }
+.skill-card[data-skill="html"] {
+  --skill-color: var(--skill-html);
+}
+.skill-card[data-skill="css"] {
+  --skill-color: var(--skill-css);
+}
+.skill-card[data-skill="js"] {
+  --skill-color: var(--skill-js);
+}
+.skill-card[data-skill="flutter"] {
+  --skill-color: var(--skill-flutter);
+}
+.skill-card[data-skill="moodle"] {
+  --skill-color: var(--skill-moodle);
+}
+.skill-card[data-skill="java"] {
+  --skill-color: var(--skill-java);
+}
+.skill-card[data-skill="python"] {
+  --skill-color: var(--skill-python);
+}
+.skill-card[data-skill="shell"] {
+  --skill-color: var(--skill-shell);
+}
 
 .skill-card img {
   width: 38px;
@@ -514,7 +528,6 @@ main {
   gap: 1rem;
 }
 
-
 /* ======================
     Footer
     ====================== */
@@ -523,7 +536,7 @@ footer {
   color: var(--muted);
   font-size: 1rem;
   margin: 3rem 0 1rem 0;
-  padding: 0 clamp(1rem,5vw,2.5rem);
+  padding: 0 clamp(1rem, 5vw, 2.5rem);
 }
 
 /* ======================
@@ -531,13 +544,12 @@ footer {
     ====================== */
 @media (prefers-color-scheme: dark) {
   .header {
-    background-color: rgba(30, 30, 30, 0.75); 
-    background: 
-      linear-gradient(
-        to bottom right,
-        rgba(46, 46, 46, 0.6) 0%,
-        rgba(32, 32, 32, 0.3) 100%
-      );
+    background-color: rgba(30, 30, 30, 0.75);
+    background: linear-gradient(
+      to bottom right,
+      rgba(46, 46, 46, 0.6) 0%,
+      rgba(32, 32, 32, 0.3) 100%
+    );
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow:
       0 8px 32px rgba(0, 0, 0, 0.25),
@@ -557,7 +569,7 @@ footer {
   .cta-header {
     border: 1px solid rgba(255, 255, 255, 0.15);
   }
-  
+
   .icon-lg,
   .icon-download,
   .github-btn .icon-github,
@@ -578,7 +590,7 @@ footer {
     );
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
-  
+
   .skill-card {
     background: linear-gradient(
       to bottom right,
@@ -590,7 +602,7 @@ footer {
 
   .skill-card:hover,
   .project-card:hover {
-    box-shadow: 
+    box-shadow:
       0 6px 28px 3px rgba(var(--skill-color), 0.5),
       inset 0 -1px 0 rgba(255, 255, 255, 0.15),
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -598,19 +610,29 @@ footer {
 }
 
 @media (max-width: 900px) {
-  .header { padding: 0 1.2rem; }
+  .header {
+    padding: 0 1.2rem;
+  }
 }
 
 @media (max-width: 690px) {
-  .logo-full { display: none; }
-  .logo-short { display: inline; }
+  .logo-full {
+    display: none;
+  }
+  .logo-short {
+    display: inline;
+  }
   .cta-header {
     width: 44px;
     padding: 0 0;
     gap: 0;
   }
-  .cta-header span { display: none; }
-  .icon-download { margin: 0; }
+  .cta-header span {
+    display: none;
+  }
+  .icon-download {
+    margin: 0;
+  }
 }
 
 @media (max-width: 600px) {
@@ -619,8 +641,10 @@ footer {
     margin-top: calc(var(--header-h) + 3rem);
     padding: 0 0.5rem;
   }
-  .projects-section { padding: 0 0.5rem; }
-  
+  .projects-section {
+    padding: 0 0.5rem;
+  }
+
   .bento-grid {
     display: flex;
     overflow-x: auto;
@@ -632,7 +656,7 @@ footer {
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
-  
+
   .project-card {
     flex: 0 0 82%;
     scroll-snap-align: none;
@@ -641,8 +665,11 @@ footer {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
     border-radius: var(--radius) var(--radius);
   }
-  
-  .contact-content { flex-direction: column; align-items: flex-start;}
+
+  .contact-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 @media (max-width: 600px), (hover: none) {
@@ -664,11 +691,14 @@ footer {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation: none !important;
     transition: none !important;
   }
-  html, body {
+  html,
+  body {
     scroll-behavior: auto !important;
   }
 }
