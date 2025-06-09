@@ -5,7 +5,7 @@ Theme Variables & Dark Mode
   --bg: #e8ecf2;
   --accent: #0950c3;
   --accent-light: #036beb;
-  --secondary: #99a9c2;
+  --secondary: #5BD998;
   --text: #000;
   --muted: #3f4146;
   --accent-rgb: 9, 80, 195;
@@ -24,7 +24,7 @@ Theme Variables & Dark Mode
     --accent-light-rgb: 3, 107, 235;
     --accent: #3a8dff;
     --accent-light: #6eafff;
-    --secondary: #3d4d66;
+    --secondary: #393B69;
     --shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
   }
 }
@@ -365,6 +365,10 @@ main {
     inset 0 -0.5px 0 rgba(255, 255, 255, 0.35),
     inset 0 0.5px 0 rgba(255, 255, 255, 0.25);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card h3 {
+  margin-bottom: 0;
 }
 
 .project-card::after {
