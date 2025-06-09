@@ -2,11 +2,11 @@
 Theme Variables & Dark Mode
 ====================== */
 :root {
-  --bg: #e8ecf2;
+  --bg: #ededed;
   --accent: #0950c3;
   --accent-light: #036beb;
-  --secondary: #5BD998;
-  --text: #000;
+  --secondary: #9597c6;
+  --text: #090202;
   --muted: #3f4146;
   --accent-rgb: 9, 80, 195;
   --accent-light-rgb: 3, 107, 235;
@@ -18,13 +18,13 @@ Theme Variables & Dark Mode
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #121212;
-    --text: #e8ecf2;
+    --accent: #3a8dff;
+    --accent-light: #6eafff;
+    --text: #fDf7f7;
+    --secondary: #393b6a;
     --muted: #9ca3af;
     --accent-rgb: 9, 80, 195;
     --accent-light-rgb: 3, 107, 235;
-    --accent: #3a8dff;
-    --accent-light: #6eafff;
-    --secondary: #393B69;
     --shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
   }
 }
@@ -663,7 +663,7 @@ footer {
 
   .project-card {
     flex: 0 0 82%;
-    scroll-snap-align: none;
+    scroll-snap-align: center;
     min-height: 280px;
     margin-right: 1.2rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
