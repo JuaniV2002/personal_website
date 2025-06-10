@@ -1,6 +1,6 @@
 # Juani Villanueva – Personal website
 
-![Lighthouse 100/100 Audit](assets/lighthouse_100_audit.jpg)
+![Lighthouse 100/100 Audit](assets/images/lighthouse_100_audit.jpg)
 
 Welcome to my personal portfolio website!  
 This project showcases my journey as a Computer Science student and web developer, with a focus on responsiveness, modern web interface, and a refined, user-centric experience.
