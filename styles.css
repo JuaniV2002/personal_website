@@ -81,16 +81,11 @@ body {
   transform: translateY(0);
 }
 
-section h1,
-article h1,
-aside h1,
-nav h1 {
-  font-size: 2.8rem !important;
+h1 {
+  font-size: 2.8rem;
 }
 
-.projects-section h2,
-.skills-section h2,
-.contact-section h2 {
+h2 {
   font-size: 2.1rem;
 }
 
