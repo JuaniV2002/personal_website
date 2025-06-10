@@ -574,6 +574,11 @@ footer {
 }
 
 @media (max-width: 600px) {
+
+  .header {
+    padding: 1rem;
+  }
+  
   .hero {
     margin: 2.5rem auto 3.5rem auto;
     margin-top: calc(var(--header-h) + 3rem);
@@ -646,23 +651,6 @@ footer {
   }
   .icon-download {
     margin: 0;
-  }
-}
-
-@media (hover: none) and (pointer: coarse) {
-  .cta:hover,
-  .cta-header:hover,
-  .contact-btn:hover,
-  .github-btn:hover,
-  .icon-lg:hover,
-  .icon-download:hover,
-  .icon-btn:hover {
-    /* Reset properties changed on hover */
-    background: inherit !important;
-    color: inherit !important;
-    box-shadow: none !important;
-    filter: none !important;
-    transform: none !important;
   }
 }
 
