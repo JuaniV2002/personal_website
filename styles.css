@@ -588,6 +588,7 @@ footer {
     margin-top: calc(var(--header-h) + 3rem);
     padding: 0 0.5rem;
   }
+
   .projects-section {
     padding: 0 0.5rem;
   }
@@ -625,7 +626,6 @@ footer {
   }
   .project-card:hover {
     transform: none !important;
-    box-shadow: var(--shadow) !important;
   }
 }
 
@@ -634,7 +634,7 @@ footer {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
   }
   .project-card:hover {
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5) !important;
+    transform: none !important;
   }
 }
 
@@ -658,9 +658,20 @@ footer {
   }
 }
 
-@media (max-width: 900px) {
-  .header {
-    padding: 0 1.2rem;
+@media (hover: none) and (pointer: coarse) {
+  .cta:hover,
+  .cta-header:hover,
+  .contact-btn:hover,
+  .github-btn:hover,
+  .icon-lg:hover,
+  .icon-download:hover,
+  .icon-btn:hover {
+    /* Reset properties changed on hover */
+    background: inherit !important;
+    color: inherit !important;
+    box-shadow: none !important;
+    filter: none !important;
+    transform: none !important;
   }
 }
 
