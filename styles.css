@@ -15,7 +15,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: linear-gradient(to bottom, #242f3d 0%, #223046 50%, #15181f 100%);
+    --bg: linear-gradient(to bottom, #223046 0%, #242f3d 50%, #15181f 100%);
     --accent: #3a8dff;
     --accent-light: #6eafff;
     --text: #fDf7f7;
