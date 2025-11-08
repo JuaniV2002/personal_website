@@ -30,8 +30,8 @@
 /* Skill Color Variables */
 :root {
   --skill-html: 241, 101, 42;
-  --skill-css: 102, 51, 153;
-  --skill-js: 247, 223, 28;
+  --skill-docker: 36, 150, 237;
+  --skill-firebase: 221, 44, 0;
   --skill-flutter: 67, 144, 206;
   --skill-moodle: 249, 128, 18;
   --skill-java: 82, 130, 161;
@@ -42,8 +42,8 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --skill-html: 241, 101, 42;
-    --skill-css: 102, 51, 153;
-    --skill-js: 247, 223, 28;
+    --skill-docker: 36, 150, 237;
+    --skill-firebase: 221, 44, 0;
     --skill-flutter: 95, 200, 248;
     --skill-moodle: 249, 128, 18;
     --skill-java: 82, 130, 161;
@@ -447,11 +447,11 @@ main {
 .skill-card[data-skill="html"] {
   --skill-color: var(--skill-html);
 }
-.skill-card[data-skill="css"] {
-  --skill-color: var(--skill-css);
+.skill-card[data-skill="docker"] {
+  --skill-color: var(--skill-docker);
 }
-.skill-card[data-skill="js"] {
-  --skill-color: var(--skill-js);
+.skill-card[data-skill="firebase"] {
+  --skill-color: var(--skill-firebase);
 }
 .skill-card[data-skill="flutter"] {
   --skill-color: var(--skill-flutter);
