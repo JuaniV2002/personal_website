@@ -9,8 +9,8 @@ This project showcases my journey as a Computer Science student and web develope
 
 ## Features
 
-- **Modern Glassmorphism Design**  
-  Sleek, frosted-glass cards, headers, and buttons throughout—delivering a fresh, high-end, and accessible look.
+- **Modern Depth-Based Design**  
+  Layered surfaces with subtle shadows, inset highlights, and carefully tuned lighting—delivering a refined, elevated, and accessible look.
 
 - **100% Responsive**  
   Crafted from the ground up to look and work perfectly on any device—desktop, tablet, or mobile. No breakpoints left behind.
@@ -22,7 +22,7 @@ This project showcases my journey as a Computer Science student and web develope
   Your eyes, your rules. The entire UI adapts seamlessly for light and dark preferences—automatically.
 
 - **Fluid Animations**  
-  Subtle, performant transitions and hover effects everywhere—smooth bento grid reveal, glassy button glows, and playful card pops.
+  Subtle, performant transitions and hover effects everywhere—smooth bento grid reveal, soft button glows, and playful card pops.
 
 - **SEO & Accessibility First**  
   - [x] **100/100 Lighthouse scores** (Performance, Accessibility, Best Practices, SEO)  
@@ -38,5 +38,5 @@ This project showcases my journey as a Computer Science student and web develope
 ## Tech Stack
 
 - **HTML5** – Semantic, accessible structure.
-- **CSS3** – Modern layout (Grid, Flexbox), custom properties, glassmorphism, dark mode, responsive breakpoints.
+- **CSS3** – Modern layout (Grid, Flexbox), custom properties, depth layering, dark mode, responsive breakpoints.
 - **JavaScript (ES6+)** – Animations and interactivity.
