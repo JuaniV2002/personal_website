@@ -29,25 +29,25 @@
 
 /* Skill Color Variables */
 :root {
+  --skill-python: 255, 230, 108;
+  --skill-tensorflow: 255, 111, 0;
+  --skill-flutter: 67, 144, 206;
+  --skill-c: 168, 185, 204;
   --skill-html: 241, 101, 42;
   --skill-docker: 36, 150, 237;
   --skill-firebase: 221, 44, 0;
-  --skill-flutter: 67, 144, 206;
-  --skill-moodle: 249, 128, 18;
-  --skill-java: 82, 130, 161;
-  --skill-python: 255, 230, 108;
   --skill-shell: 0, 200, 64;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --skill-python: 255, 230, 108;
+    --skill-tensorflow: 255, 111, 0;
+    --skill-flutter: 95, 200, 248;
+    --skill-c: 168, 185, 204;
     --skill-html: 241, 101, 42;
     --skill-docker: 36, 150, 237;
     --skill-firebase: 221, 44, 0;
-    --skill-flutter: 95, 200, 248;
-    --skill-moodle: 249, 128, 18;
-    --skill-java: 82, 130, 161;
-    --skill-python: 255, 230, 108;
     --skill-shell: 90, 210, 60;
   }
 }
@@ -302,6 +302,7 @@ main {
 }
 
 .project-card {
+  position: relative;
   background:
     url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path fill="white" fill-opacity="0.11" d="M0 140 Q50 130 100 170 T200 130 V200 H0 Z"/><path fill="white" fill-opacity="0.10" d="M0 80 Q60 100 120 60 T200 100 V200 H0 Z"/></svg>') center/cover no-repeat,
     linear-gradient(120deg, rgba(255,255,255,0.16) 20%, rgba(255,255,255,0.10) 60%, rgba(255,255,255,0.16) 80%),
@@ -327,6 +328,24 @@ main {
   z-index: 999;
   box-sizing: border-box;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-badge {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  background: #e53935;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.3em 0.7em;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  box-shadow: 0 2px 8px rgba(229, 57, 53, 0.4);
+  z-index: 1000;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .project-card h3 {
@@ -456,11 +475,11 @@ main {
 .skill-card[data-skill="flutter"] {
   --skill-color: var(--skill-flutter);
 }
-.skill-card[data-skill="moodle"] {
-  --skill-color: var(--skill-moodle);
+.skill-card[data-skill="tensorflow"] {
+  --skill-color: var(--skill-tensorflow);
 }
-.skill-card[data-skill="java"] {
-  --skill-color: var(--skill-java);
+.skill-card[data-skill="c"] {
+  --skill-color: var(--skill-c);
 }
 .skill-card[data-skill="python"] {
   --skill-color: var(--skill-python);
