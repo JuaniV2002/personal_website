@@ -22,3 +22,49 @@ if (downloadBtn) {
     }
   });
 }
+
+/* ================================
+   Dynamic Island Header
+   ================================ */
+
+const header = document.querySelector('.header');
+const isMobile = () => window.innerWidth <= 600;
+
+if (header && !prefersReducedMotion) {
+  // Scroll shrink behavior (disabled on mobile)
+  let ticking = false;
+  const scrollThreshold = 50;
+
+  const updateHeader = () => {
+    // Don't shrink on mobile screens
+    if (isMobile()) {
+      header.classList.remove('shrunk');
+      ticking = false;
+      return;
+    }
+    
+    const currentScrollY = window.scrollY;
+    
+    if (currentScrollY > scrollThreshold) {
+      header.classList.add('shrunk');
+    } else {
+      header.classList.remove('shrunk');
+    }
+    
+    ticking = false;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(updateHeader);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // Also check on resize
+  window.addEventListener('resize', () => {
+    if (isMobile()) {
+      header.classList.remove('shrunk');
+    }
+  }, { passive: true });
+}
