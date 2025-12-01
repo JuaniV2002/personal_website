@@ -11,6 +11,14 @@
   --radius: 1.55rem;
   --shadow: 0 4px 24px rgba(60, 100, 180, 0.12);
   --header-h: 90px;
+  
+  /* Depth layering - Light Mode */
+  --surface-base: rgba(200, 210, 230, 0.25);
+  --surface-raised: rgba(255, 255, 255, 0.45);
+  --surface-overlay: rgba(255, 255, 255, 0.65);
+  --surface-sunken: rgba(180, 195, 220, 0.3);
+  --shadow-color: 60, 100, 180;
+  --highlight-color: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,6 +32,14 @@
     --accent-rgb: 9, 80, 195;
     --accent-light-rgb: 3, 107, 235;
     --shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+    
+    /* Depth layering - Dark Mode */
+    --surface-base: rgba(25, 32, 45, 0.6);
+    --surface-raised: rgba(50, 60, 80, 0.5);
+    --surface-overlay: rgba(70, 85, 110, 0.4);
+    --surface-sunken: rgba(15, 20, 30, 0.5);
+    --shadow-color: 0, 0, 0;
+    --highlight-color: 255, 255, 255;
   }
 }
 
@@ -109,21 +125,21 @@ h3 {
   align-items: center;
   justify-content: space-between;
   background:
-    linear-gradient(120deg, rgba(255,255,255,0.16) 20%, rgba(255,255,255,0.10) 60%, rgba(255,255,255,0.16) 80%),
-    linear-gradient(100deg, rgba(90,180,255,0.07) 0%, rgba(255,255,255,0.0) 60%),
-    linear-gradient(
-      to bottom right,
-      rgba(255,255,255,0.36) 0%,
-      rgba(255,255,255,0.13) 100%
-    );
+    linear-gradient(180deg, rgba(var(--highlight-color), 0.12) 0%, transparent 40%),
+    linear-gradient(120deg, var(--surface-overlay) 0%, var(--surface-raised) 50%, var(--surface-overlay) 100%),
+    linear-gradient(100deg, rgba(90,180,255,0.08) 0%, transparent 60%),
+    var(--surface-raised);
   backdrop-filter: blur(28px) saturate(240%);
   -webkit-backdrop-filter: blur(28px) saturate(240%);
-  border: 1.5px solid rgba(255,255,255,0.32);
+  border: 1.5px solid rgba(var(--highlight-color), 0.35);
+  border-top-color: rgba(var(--highlight-color), 0.5);
+  border-bottom-color: rgba(var(--shadow-color), 0.1);
   border-radius: calc(var(--header-h) / 2);
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.05),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    0 10px 40px rgba(var(--shadow-color), 0.12),
+    0 4px 12px rgba(var(--shadow-color), 0.08),
+    inset 0 1px 1px rgba(var(--highlight-color), 0.4),
+    inset 0 -1px 1px rgba(var(--shadow-color), 0.05);
   z-index: 1000;
   box-sizing: border-box;
   transition: 
@@ -142,9 +158,10 @@ h3 {
   height: calc(var(--header-h) - 15px);
   padding: 0.7rem 1.8rem;
   box-shadow:
-    0 4px 20px rgba(0, 0, 0, 0.1),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    0 6px 24px rgba(var(--shadow-color), 0.15),
+    0 2px 8px rgba(var(--shadow-color), 0.1),
+    inset 0 1px 1px rgba(var(--highlight-color), 0.3),
+    inset 0 -1px 1px rgba(var(--shadow-color), 0.04);
 }
 
 .logo {
@@ -322,17 +339,15 @@ main {
 .project-card {
   position: relative;
   background:
-    url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path fill="white" fill-opacity="0.11" d="M0 140 Q50 130 100 170 T200 130 V200 H0 Z"/><path fill="white" fill-opacity="0.10" d="M0 80 Q60 100 120 60 T200 100 V200 H0 Z"/></svg>') center/cover no-repeat,
-    linear-gradient(120deg, rgba(255,255,255,0.16) 20%, rgba(255,255,255,0.10) 60%, rgba(255,255,255,0.16) 80%),
-    linear-gradient(100deg, rgba(90,180,255,0.07) 0%, rgba(255,255,255,0.0) 60%),
-    linear-gradient(
-      to bottom right,
-      rgba(255,255,255,0.36) 0%,
-      rgba(255,255,255,0.13) 100%
-    );
+    linear-gradient(180deg, rgba(var(--highlight-color), 0.15) 0%, transparent 30%),
+    url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path fill="white" fill-opacity="0.08" d="M0 140 Q50 130 100 170 T200 130 V200 H0 Z"/><path fill="white" fill-opacity="0.06" d="M0 80 Q60 100 120 60 T200 100 V200 H0 Z"/></svg>') center/cover no-repeat,
+    linear-gradient(120deg, var(--surface-overlay) 0%, var(--surface-raised) 50%, var(--surface-overlay) 100%),
+    var(--surface-raised);
   backdrop-filter: blur(28px) saturate(240%);
   -webkit-backdrop-filter: blur(28px) saturate(240%);
-  border: 1.5px solid rgba(255,255,255,0.32);
+  border: 1.5px solid rgba(var(--highlight-color), 0.3);
+  border-top-color: rgba(var(--highlight-color), 0.45);
+  border-bottom-color: rgba(var(--shadow-color), 0.08);
   border-radius: var(--radius);
   padding: 1.2rem 1.2rem;
   display: flex;
@@ -340,9 +355,10 @@ main {
   gap: 1rem;
   min-height: 210px;
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.05),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    0 12px 40px rgba(var(--shadow-color), 0.1),
+    0 4px 12px rgba(var(--shadow-color), 0.06),
+    inset 0 1px 1px rgba(var(--highlight-color), 0.35),
+    inset 0 -1px 2px rgba(var(--shadow-color), 0.04);
   z-index: 999;
   box-sizing: border-box;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -384,11 +400,12 @@ main {
 }
 
 .project-card:hover {
-  transform: translateY(-4px) scale(1.02);
+  transform: translateY(-6px) scale(1.02);
   box-shadow:
-    0 12px 40px rgba(60, 100, 180, 0.15),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    0 20px 50px rgba(var(--shadow-color), 0.18),
+    0 8px 20px rgba(var(--shadow-color), 0.1),
+    inset 0 1px 2px rgba(var(--highlight-color), 0.45),
+    inset 0 -1px 2px rgba(var(--shadow-color), 0.06);
 }
 
 .card-spacer {
@@ -403,7 +420,9 @@ main {
 }
 
 .tags span {
-  background: var(--secondary);
+  background:
+    linear-gradient(180deg, rgba(var(--highlight-color), 0.1) 0%, transparent 50%),
+    var(--secondary);
   color: var(--text);
   padding: 0.25em 0.85em;
   border-radius: 1em;
@@ -412,6 +431,10 @@ main {
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
+  box-shadow:
+    inset 0 1px 0 rgba(var(--highlight-color), 0.15),
+    inset 0 -1px 0 rgba(var(--shadow-color), 0.1),
+    0 1px 3px rgba(var(--shadow-color), 0.08);
 }
 
 /* In GitHub Button styles */
@@ -455,13 +478,21 @@ main {
   gap: 0.5em;
   padding: 1em;
   min-height: 100px;
-  background: rgba(255, 255, 255, 0.32);
+  background:
+    linear-gradient(180deg, rgba(var(--highlight-color), 0.18) 0%, transparent 40%),
+    linear-gradient(to bottom, var(--surface-overlay) 0%, var(--surface-raised) 100%);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   color: var(--text);
   border-radius: var(--radius);
-  border: 1.5px solid rgba(255,255,255,0.42);
-  box-shadow: 0 8px 40px rgba(60,100,180,0.09);
+  border: 1.5px solid rgba(var(--highlight-color), 0.35);
+  border-top-color: rgba(var(--highlight-color), 0.5);
+  border-bottom-color: rgba(var(--shadow-color), 0.08);
+  box-shadow:
+    0 8px 28px rgba(var(--shadow-color), 0.08),
+    0 2px 8px rgba(var(--shadow-color), 0.05),
+    inset 0 1px 1px rgba(var(--highlight-color), 0.4),
+    inset 0 -1px 1px rgba(var(--shadow-color), 0.03);
   font-size: 0.9rem;
   font-weight: 600;
   transition: box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
@@ -474,11 +505,12 @@ main {
 }
 
 .skill-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
   box-shadow:
-    0 6px 28px 2px rgba(var(--skill-color), 0.4),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 12px 35px 3px rgba(var(--skill-color), 0.35),
+    0 4px 12px rgba(var(--shadow-color), 0.1),
+    inset 0 1px 2px rgba(var(--highlight-color), 0.45),
+    inset 0 -1px 1px rgba(var(--shadow-color), 0.05);
 }
 
 .skill-card[data-skill="html"] {
@@ -537,31 +569,35 @@ footer {
 /* Media Queries */
 @media (prefers-color-scheme: dark) {
   .header {
-    background-color: rgba(30, 30, 30, 0.75);
-    background: linear-gradient(
-      to bottom right,
-      rgba(46, 46, 46, 0.6) 0%,
-      rgba(32, 32, 32, 0.3) 100%
-    );
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background:
+      linear-gradient(180deg, rgba(var(--highlight-color), 0.06) 0%, transparent 40%),
+      linear-gradient(120deg, var(--surface-overlay) 0%, var(--surface-raised) 50%, var(--surface-overlay) 100%),
+      linear-gradient(100deg, rgba(90, 140, 255, 0.06) 0%, transparent 60%),
+      var(--surface-raised);
+    border: 1.5px solid rgba(var(--highlight-color), 0.1);
+    border-top-color: rgba(var(--highlight-color), 0.18);
+    border-bottom-color: rgba(var(--shadow-color), 0.3);
     box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.25),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      0 10px 40px rgba(var(--shadow-color), 0.4),
+      0 4px 12px rgba(var(--shadow-color), 0.3),
+      inset 0 1px 1px rgba(var(--highlight-color), 0.12),
+      inset 0 -1px 2px rgba(var(--shadow-color), 0.2);
   }
 
   .header:hover {
     box-shadow:
-      0 8px 36px rgba(0, 0, 0, 0.35),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.15),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      0 12px 45px rgba(var(--shadow-color), 0.5),
+      0 6px 16px rgba(var(--shadow-color), 0.35),
+      inset 0 1px 1px rgba(var(--highlight-color), 0.15),
+      inset 0 -1px 2px rgba(var(--shadow-color), 0.25);
   }
 
   .header.shrunk {
     box-shadow:
-      0 4px 20px rgba(0, 0, 0, 0.3),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      0 6px 24px rgba(var(--shadow-color), 0.35),
+      0 2px 8px rgba(var(--shadow-color), 0.25),
+      inset 0 1px 1px rgba(var(--highlight-color), 0.1),
+      inset 0 -1px 1px rgba(var(--shadow-color), 0.15);
   }
 
   .icon-btn {
@@ -599,25 +635,48 @@ footer {
   }
 
   .project-card {
-    background: rgba(40, 45, 60, 0.38);
-    border: 1.5px solid rgba(255,255,255,0.10);
+    background:
+      linear-gradient(180deg, rgba(var(--highlight-color), 0.08) 0%, transparent 30%),
+      linear-gradient(120deg, var(--surface-overlay) 0%, var(--surface-raised) 50%, var(--surface-overlay) 100%),
+      var(--surface-raised);
+    border: 1.5px solid rgba(var(--highlight-color), 0.1);
+    border-top-color: rgba(var(--highlight-color), 0.16);
+    border-bottom-color: rgba(var(--shadow-color), 0.25);
+    box-shadow:
+      0 12px 40px rgba(var(--shadow-color), 0.35),
+      0 4px 12px rgba(var(--shadow-color), 0.25),
+      inset 0 1px 1px rgba(var(--highlight-color), 0.1),
+      inset 0 -1px 2px rgba(var(--shadow-color), 0.15);
+  }
+
+  .project-card:hover {
+    box-shadow:
+      0 20px 50px rgba(var(--shadow-color), 0.45),
+      0 8px 20px rgba(var(--shadow-color), 0.3),
+      inset 0 1px 2px rgba(var(--highlight-color), 0.15),
+      inset 0 -1px 2px rgba(var(--shadow-color), 0.2);
   }
 
   .skill-card {
-    background: linear-gradient(
-      to bottom right,
-      rgba(46, 46, 46, 0.3) 0%,
-      rgba(32, 32, 32, 0.15) 100%
-    );
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background:
+      linear-gradient(180deg, rgba(var(--highlight-color), 0.08) 0%, transparent 40%),
+      linear-gradient(to bottom, var(--surface-overlay) 0%, var(--surface-raised) 100%);
+    border: 1.5px solid rgba(var(--highlight-color), 0.1);
+    border-top-color: rgba(var(--highlight-color), 0.16);
+    border-bottom-color: rgba(var(--shadow-color), 0.2);
+    box-shadow:
+      0 8px 28px rgba(var(--shadow-color), 0.3),
+      0 2px 8px rgba(var(--shadow-color), 0.2),
+      inset 0 1px 1px rgba(var(--highlight-color), 0.12),
+      inset 0 -1px 1px rgba(var(--shadow-color), 0.1);
   }
 
-  .skill-card:hover,
-  .project-card:hover {
+  .skill-card:hover {
     box-shadow:
-      0 6px 28px 3px rgba(var(--skill-color), 0.5),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.15),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      0 12px 35px 3px rgba(var(--skill-color), 0.4),
+      0 4px 12px rgba(var(--shadow-color), 0.25),
+      inset 0 1px 2px rgba(var(--highlight-color), 0.15),
+      inset 0 -1px 1px rgba(var(--shadow-color), 0.12);
   }
 }
 
