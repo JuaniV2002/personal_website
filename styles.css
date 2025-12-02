@@ -48,7 +48,7 @@
   --skill-python: 255, 230, 108;
   --skill-tensorflow: 255, 111, 0;
   --skill-flutter: 67, 144, 206;
-  --skill-c: 168, 185, 204;
+  --skill-actions: 32, 136, 255;
   --skill-html: 241, 101, 42;
   --skill-docker: 36, 150, 237;
   --skill-firebase: 221, 44, 0;
@@ -60,7 +60,7 @@
     --skill-python: 255, 230, 108;
     --skill-tensorflow: 255, 111, 0;
     --skill-flutter: 95, 200, 248;
-    --skill-c: 168, 185, 204;
+    --skill-actions: 32, 136, 255;
     --skill-html: 241, 101, 42;
     --skill-docker: 36, 150, 237;
     --skill-firebase: 221, 44, 0;
@@ -365,10 +365,35 @@ main {
   border-radius: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  box-shadow: 0 2px 8px rgba(229, 57, 53, 0.4);
+  box-shadow:
+    0 2px 8px rgba(229, 57, 53, 0.4),
+    0 10px 24px rgba(229, 57, 53, 0.12),
+    0 22px 48px rgba(229, 57, 53, 0.06);
   z-index: 1000;
   user-select: none;
   -webkit-user-select: none;
+}
+
+/* Subtle radial glow under the badge */
+.project-badge::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -12px;
+  width: 140%;
+  height: 32px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(229, 57, 53, 0.28) 0%,
+    rgba(229, 57, 53, 0.12) 30%,
+    rgba(229, 57, 53, 0.04) 60%,
+    transparent 70%
+  );
+  filter: blur(12px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999; /* behind the badge but above the card */
 }
 
 .project-card h3 {
@@ -512,8 +537,8 @@ main {
 .skill-card[data-skill="tensorflow"] {
   --skill-color: var(--skill-tensorflow);
 }
-.skill-card[data-skill="c"] {
-  --skill-color: var(--skill-c);
+.skill-card[data-skill="actions"] {
+  --skill-color: var(--skill-actions);
 }
 .skill-card[data-skill="python"] {
   --skill-color: var(--skill-python);
@@ -651,6 +676,18 @@ footer {
       0 6px 18px rgba(var(--shadow-color), 0.35),
       inset 0 1px 3px rgba(var(--highlight-color), 0.1),
       inset 0 -2px 4px rgba(var(--shadow-color), 0.18);
+  }
+
+  /* Slightly soften the badge glow in dark mode */
+  .project-badge::after {
+    background: radial-gradient(
+      ellipse at center,
+      rgba(229, 57, 53, 0.18) 0%,
+      rgba(229, 57, 53, 0.08) 30%,
+      rgba(229, 57, 53, 0.02) 60%,
+      transparent 70%
+    );
+    filter: blur(10px);
   }
 }
 
