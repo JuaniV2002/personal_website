@@ -149,7 +149,7 @@ h3 {
 .header.shrunk {
   max-width: 720px;
   height: calc(var(--header-h) - 15px);
-  padding: 0.7rem 1.8rem;
+  padding: 0.7rem 0.95rem;
   box-shadow:
     0 8px 32px rgba(var(--shadow-color), 0.18),
     0 3px 12px rgba(var(--shadow-color), 0.12),
