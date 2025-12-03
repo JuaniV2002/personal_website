@@ -24,7 +24,7 @@ if (downloadBtn) {
 }
 
 /* ================================
-   Dynamic Island Header
+   Dynamic Header
    ================================ */
 
 const header = document.querySelector('.header');
