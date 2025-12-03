@@ -278,13 +278,21 @@
     </header>
     <main id="main-content">
       <section class="hero" aria-labelledby="hero-heading">
-        <h1 id="hero-heading">Building Software That Matters</h1>
-        <p>
-          Hey! I'm <span class="primary">Juani Villanueva</span> — a CS student focused on AI and machine learning. I build full-stack web apps and cross-platform mobile experiences with Flutter. This portfolio showcases projects I've shipped to production and tools I've built to solve real problems.
-        </p>
-        <a href="#projects" class="cta" aria-label="Skip to projects section">
-          Explore my GitHub Projects
-        </a>
+        <div class="hero-card">
+          <span class="hero-badge">Available for opportunities</span>
+          <h1 id="hero-heading">Building Software<br><span class="gradient-text">That Matters</span></h1>
+          <p>
+            Hey! I'm <span class="primary">Juani Villanueva</span> — a CS student focused on AI and machine learning. I build full-stack web apps and cross-platform mobile experiences with Flutter. This portfolio showcases projects I've shipped to production and tools I've built to solve real problems.
+          </p>
+          <div class="hero-actions">
+            <a href="#projects" class="cta" aria-label="Skip to projects section">
+              Explore Projects
+            </a>
+            <a href="#contact" class="cta-secondary" aria-label="Go to contact section">
+              Get in Touch
+            </a>
+          </div>
+        </div>
       </section>
       <section id="projects" class="projects-section" aria-labelledby="projects-heading">
         <h2 id="projects-heading">Featured GitHub Projects</h2>
@@ -412,13 +420,13 @@
             <img src="assets/icons/flutter.svg" alt="Flutter icon">
             <span translate="no">Flutter</span>
           </div>
-          <div class="skill-card" data-skill="actions">
-            <img src="assets/icons/githubactions.svg" alt="GitHub Actions icon">
-            <span translate="no">GH Actions</span>
-          </div>
           <div class="skill-card" data-skill="html">
             <img src="assets/icons/html5.svg" alt="HTML icon">
             <span translate="no">Web Dev</span>
+          </div>
+          <div class="skill-card" data-skill="actions">
+            <img src="assets/icons/githubactions.svg" alt="GitHub Actions icon">
+            <span translate="no">GH Actions</span>
           </div>
           <div class="skill-card" data-skill="docker">
             <img src="assets/icons/docker.svg" alt="Docker icon">
@@ -435,15 +443,35 @@
         </div>
       </section>
       <section id="contact" class="contact-section" aria-labelledby="contact-heading">
-        <h2 id="contact-heading">Let's Connect!</h2>
-        <div class="contact-content">
-          <p>
-            Have an interesting project or want to chat about AI, mobile apps, or tech in general? I'm always open to new opportunities and collaborations.
-          </p>
-          <a href="mailto:juani2002villa@icloud.com" class="contact-btn" 
-          aria-label="Send email to Juani">
-            Email me
-          </a>
+        <div class="contact-card">
+          <div class="contact-inner">
+            <div class="contact-text">
+              <span class="contact-label">Let's work together</span>
+              <h2 id="contact-heading">Got an idea?<br><span class="gradient-text">Let's make it real.</span></h2>
+              <p>
+                Have an interesting project or want to chat about AI, mobile apps, or tech in general? I'm always open to new opportunities and collaborations.
+              </p>
+            </div>
+            <div class="contact-action">
+              <a href="mailto:juani2002villa@icloud.com" class="contact-btn-large" 
+              aria-label="Send email to Juani">
+                <img src="assets/icons/mail.svg" alt="Email" class="contact-btn-icon">
+                <span class="contact-btn-text">
+                  <span class="contact-btn-label">Send me an email</span>
+                  <span class="contact-btn-email">juani2002villa@icloud.com</span>
+                </span>
+              </a>
+              <div class="contact-socials">
+                <span>Or find me on</span>
+                <a href="https://github.com/JuaniV2002" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                  <img src="assets/icons/github.svg" alt="GitHub">
+                </a>
+                <a href="https://linkedin.com/in/juanivillanueva" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <img src="assets/icons/linkedin.svg" alt="LinkedIn">
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>
