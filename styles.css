@@ -1,51 +1,28 @@
-/* Theme Variables */
+/* Theme Variables — iOS 6 Skeuomorphic */
 :root {
-  --bg: linear-gradient(to bottom, #cfd8ef 0%, #e3e8ee 100%);
-  --accent: #0950c3;
-  --accent-light: #036beb;
-  --secondary: #9597c6;
-  --text: #090202;
-  --muted: #3f4146;
-  --accent-rgb: 9, 80, 195;
-  --accent-light-rgb: 3, 107, 235;
-  --radius: 1.55rem;
-  --shadow: 0 4px 24px rgba(60, 100, 180, 0.12);
+  --bg: #c7bfb0;
+  /* Fallback */
+  --accent: #1e3c72;
+  --accent-light: #2a5298;
+  --secondary: #8b8e96;
+  --text: #1a1a1a;
+  --muted: #4a4a4a;
+  --accent-rgb: 30, 60, 114;
+  --accent-light-rgb: 42, 82, 152;
+  --radius: 10px;
+  --shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
   --header-h: 90px;
-  
-  /* Depth layering - Light Mode (solid colors) */
-  --surface-base: #d5dded;
-  --surface-raised: #e8ecf4;
-  --surface-overlay: #f3f5f9;
-  --surface-sunken: #c8d2e4;
-  --shadow-color: 60, 100, 180;
+
+  /* Skeuomorphic depth surfaces */
+  --surface-base: #d6d1c4;
+  --surface-raised: #eae6dc;
+  --surface-overlay: #f5f2ec;
+  --surface-sunken: #bfb9ab;
+  --shadow-color: 0, 0, 0;
   --highlight-color: 255, 255, 255;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: linear-gradient(to bottom, #223046 0%, #242f3d 50%, #15181f 100%);
-    --accent: #3a8dff;
-    --accent-light: #6eafff;
-    --text: #fDf7f7;
-    --secondary: #393b6a;
-    --muted: #9ca3af;
-    --accent-rgb: 9, 80, 195;
-    --accent-light-rgb: 3, 107, 235;
-    --shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
-    
-    /* Binary grid background */
-    --hero-background-binary-grid: rgba(58, 141, 255, 0.6);
-    --hero-binary-grid-opacity: 0.85;
-    
-    /* Depth layering - Dark Mode (solid colors) */
-    --surface-base: #1a2130;
-    --surface-raised: #222a3a;
-    --surface-overlay: #2a3444;
-    --surface-sunken: #141920;
-    --shadow-color: 0, 0, 0;
-    --highlight-color: 255, 255, 255;
-  }
-}
+
 
 /* Skill Color Variables */
 :root {
@@ -59,18 +36,7 @@
   --skill-shell: 0, 200, 64;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --skill-python: 255, 230, 108;
-    --skill-tensorflow: 255, 111, 0;
-    --skill-flutter: 95, 200, 248;
-    --skill-actions: 32, 136, 255;
-    --skill-html: 241, 101, 42;
-    --skill-docker: 36, 150, 237;
-    --skill-firebase: 221, 44, 0;
-    --skill-shell: 90, 210, 60;
-  }
-}
+
 
 /* Base Styles */
 html,
@@ -80,9 +46,23 @@ body {
   width: 100vw;
   overflow-x: hidden;
   scroll-behavior: smooth;
-  background: var(--bg);
+  background-color: var(--bg);
+  /* Light Pinstripe textured background */
+  background-image:
+    repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.05) 2px,
+      rgba(0, 0, 0, 0.05) 4px),
+    repeating-linear-gradient(90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.02) 2px,
+      rgba(0, 0, 0, 0.02) 4px);
+  background-size: 4px 4px;
   color: var(--text);
-  font-family: "Nunito", "Inter", sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .skip-link {
@@ -96,17 +76,32 @@ body {
   text-decoration: none;
   transform: translateY(-100%);
   transition: transform 0.3s;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
 }
+
 .skip-link:focus {
   transform: translateY(0);
 }
 
 h2 {
   font-size: 2.1rem;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 h3 {
   color: var(--accent-light);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* iOS 6 — Helvetica Neue heading typeface */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: -0.01em;
 }
 
 /* Header */
@@ -128,43 +123,36 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* Top 50% lighter, bottom 50% darker for glass look */
   background:
-    linear-gradient(180deg, rgba(var(--highlight-color), 0.5) 0%, transparent 50%),
-    linear-gradient(to bottom, var(--surface-overlay) 0%, var(--surface-raised) 100%);
-  border-radius: calc(var(--header-h) / 2);
+    linear-gradient(to bottom,
+      #cae0f5 0%,
+      #a2c3e5 35%,
+      #7faedc 65%,
+      #558bc8 100%);
+  border-radius: 12px;
+  border: 1px solid #2d588e;
+  /* Hard darker border */
   box-shadow:
-    0 12px 48px rgba(var(--shadow-color), 0.15),
-    0 4px 16px rgba(var(--shadow-color), 0.1),
-    inset 0 2px 2px rgba(var(--highlight-color), 0.5),
-    inset 0 -2px 4px rgba(var(--shadow-color), 0.06);
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6),
+    /* Inner top highlight */
+    inset 0 -1px 1px rgba(0, 0, 0, 0.2);
+  /* Inner bottom shadow */
   z-index: 1000;
   box-sizing: border-box;
-  transition: 
-    width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-    max-width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-    height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-    padding 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-    border-radius 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Dynamic Island: Shrunk state when scrolling */
-.header.shrunk {
-  max-width: 720px;
-  height: calc(var(--header-h) - 15px);
-  padding: 0.7rem 0.95rem;
-  box-shadow:
-    0 8px 32px rgba(var(--shadow-color), 0.18),
-    0 3px 12px rgba(var(--shadow-color), 0.12),
-    inset 0 2px 2px rgba(var(--highlight-color), 0.4),
-    inset 0 -2px 3px rgba(var(--shadow-color), 0.05);
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+  /* Etch text in header */
 }
 
 .logo {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1.6rem;
   font-weight: 700;
+  letter-spacing: -0.01em;
 }
+
 .logo-short {
   display: none;
 }
@@ -203,25 +191,29 @@ h3 {
   font-size: 1.08rem;
   height: 44px;
   padding: 0 1.5em;
+  /* Smooth iOS gradient */
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, transparent 50%),
-    linear-gradient(
-      to bottom right,
-      rgba(var(--accent-rgb), 0.85) 0%,
-      rgba(var(--accent-light-rgb), 0.75) 100%
-    );
+    linear-gradient(to bottom,
+      #8eb9df 0%,
+      #5a98d3 35%,
+      #2774c4 65%,
+      #1d5ba5 100%);
   color: #fff;
-  border-radius: 1.2em;
+  border-radius: 8px;
   font-weight: 700;
   text-decoration: none;
   line-height: 1;
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid #143764;
+  /* Sharp external border */
   box-shadow:
-    0 6px 24px rgba(var(--accent-rgb), 0.25),
-    0 2px 8px rgba(0, 0, 0, 0.15),
-    inset 0 1px 2px rgba(255, 255, 255, 0.35),
-    inset 0 -1px 2px rgba(0, 0, 0, 0.15);
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    /* Outer Drop Shadow */
+    inset 0 1px 1px rgba(255, 255, 255, 0.6),
+    /* Inner Highlight */
+    inset 0 -1px 1px rgba(0, 0, 0, 0.2);
+  /* Inner Bottom Lowlight */
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+  /* Debossed text */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   user-select: none;
   -webkit-user-select: none;
@@ -231,18 +223,65 @@ h3 {
 /* GitHub button tweaks */
 .github-btn {
   font-weight: 500;
+  border-radius: var(--radius);
+}
+
+/* cta-header sits inside the header — keeping standard CTA rounding */
+.cta-header {
+  border-radius: 8px;
 }
 
 .cta:hover,
-.cta-header:hover,
 .contact-btn:hover {
+  background:
+    linear-gradient(to bottom,
+      #a0c6e8 0%,
+      #6ba5da 35%,
+      #3580cc 65%,
+      #2765b0 100%);
   box-shadow:
-    0 8px 28px rgba(var(--accent-rgb), 0.2),
-    0 0 12px 2px rgba(var(--accent-light-rgb), 0.15),
-    inset 0 1px 2px rgba(255, 255, 255, 0.4),
-    inset 0 -1px 2px rgba(0, 0, 0, 0.18);
-  transform: scale(1.04);
+    0 3px 6px rgba(0, 0, 0, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.7),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
   z-index: 2;
+}
+
+/* Header buttons - Inset/Embossed effect matching iOS 6 Navigation bar buttons */
+.header .cta-header,
+.header .icon-btn {
+  background:
+    linear-gradient(to bottom,
+      #86a5cc 0%,
+      #5f8bc2 35%,
+      #4175b5 65%,
+      #285e9e 100%);
+  border: 1px solid #234c82;
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.25),
+    inset 0 1px 2px rgba(0, 0, 0, 0.4),
+    0 1px 0 rgba(255, 255, 255, 0.5);
+  color: #fff;
+}
+
+.header .icon-btn img {
+  filter: brightness(0) invert(1);
+}
+
+.header .cta-header:hover,
+.header .icon-btn:hover {
+  background:
+    linear-gradient(to bottom,
+      #7293bb 0%,
+      #4b7bbb 35%,
+      #3167a8 65%,
+      #1b5191 100%);
+  box-shadow:
+    inset 0 2px 5px rgba(0, 0, 0, 0.35),
+    inset 0 1px 3px rgba(0, 0, 0, 0.5),
+    0 1px 0 rgba(255, 255, 255, 0.5);
+  transform: none;
+  /* No scale since they are physically inset into the plastic bar */
 }
 
 /* Main Content */
@@ -272,75 +311,66 @@ main {
   overflow: visible;
 }
 
-/* Glassmorphic hero card */
+/* Glossy hero card */
 .hero-card {
   position: relative;
-  background:
-    linear-gradient(180deg, rgba(var(--highlight-color), 0.7) 0%, transparent 50%),
-    linear-gradient(to bottom, var(--surface-overlay) 0%, var(--surface-raised) 100%);
-  border-radius: 2.5rem;
+  background: #f4f4f4;
+  background-image: linear-gradient(to bottom, #fcfcfc 0%, #e8e8e8 100%);
+  border-radius: 12px;
+  border: 1px solid #c2c2c2;
   padding: 3rem 3.5rem;
   max-width: 700px;
   box-shadow:
-    0 25px 80px rgba(var(--shadow-color), 0.15),
-    0 10px 30px rgba(var(--shadow-color), 0.1),
-    inset 0 2px 4px rgba(var(--highlight-color), 0.6),
-    inset 0 -2px 6px rgba(var(--shadow-color), 0.05);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9);
   z-index: 1;
   text-align: center;
 }
 
-/* Animated gradient border */
+/* Beveled border frame */
 .hero-card::before {
   content: "";
   position: absolute;
-  inset: -2px;
-  border-radius: 2.6rem;
-  padding: 2px;
-  background: linear-gradient(
-    135deg,
-    rgba(var(--accent-rgb), 0.5),
-    rgba(var(--accent-light-rgb), 0.3),
-    rgba(149, 151, 198, 0.4),
-    rgba(var(--accent-rgb), 0.5)
-  );
-  background-size: 300% 300%;
-  animation: gradient-rotate 6s ease infinite;
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
+  inset: -1px;
+  border-radius: 17px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
   pointer-events: none;
 }
 
 @keyframes gradient-rotate {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .hero-badge {
   display: inline-block;
-  background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.15), rgba(var(--accent-light-rgb), 0.1));
-  color: var(--accent);
+  background:
+    linear-gradient(to bottom,
+      #7fb8ec 0%,
+      #4b95dd 35%,
+      #2371c6 65%,
+      #13539e 100%);
+  color: #fff;
   font-size: 0.85rem;
   font-weight: 700;
   padding: 0.5em 1.2em;
-  border-radius: 2em;
+  border-radius: 6px;
   margin-bottom: 1.5rem;
-  border: 1px solid rgba(var(--accent-rgb), 0.2);
-  animation: pulse-badge 3s ease-in-out infinite;
-}
-
-@keyframes pulse-badge {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0.3); }
-  50% { box-shadow: 0 0 20px 4px rgba(var(--accent-rgb), 0.15); }
+  border: 1px solid #0d386b;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.6);
+  /* Remove pulse to keep it feeling like solid plastic/glass */
 }
 
 .hero h1 {
@@ -351,7 +381,7 @@ main {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 50%, #9597c6 100%);
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #5b8fd9 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -360,9 +390,17 @@ main {
 }
 
 @keyframes gradient-shift {
-  0% { background-position: 0% center; }
-  50% { background-position: 100% center; }
-  100% { background-position: 0% center; }
+  0% {
+    background-position: 0% center;
+  }
+
+  50% {
+    background-position: 100% center;
+  }
+
+  100% {
+    background-position: 0% center;
+  }
 }
 
 .hero p {
@@ -388,19 +426,55 @@ main {
   font-size: 1.08rem;
   height: 44px;
   padding: 0 1.5em;
-  background: transparent;
-  color: var(--accent);
-  border: 2px solid rgba(var(--accent-rgb), 0.3);
-  border-radius: 1.2em;
+  background:
+    linear-gradient(to bottom,
+      #f5f5f5 0%,
+      #e0e0e0 35%,
+      #c4c4c4 65%,
+      #b5b5b5 100%);
+  color: #333;
+  /* Darker text for light glossy button */
+  border: 1px solid #8e8e8e;
+  border-radius: 8px;
   font-weight: 700;
   text-decoration: none;
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.15),
+    inset 0 1px 2px rgba(0, 0, 0, 0.25),
+    0 1px 0 rgba(255, 255, 255, 1);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  /* Embossed white shadow */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cta-secondary:hover {
-  background: rgba(var(--accent-rgb), 0.1);
-  border-color: rgba(var(--accent-rgb), 0.5);
-  transform: scale(1.04);
+  background:
+    linear-gradient(to bottom,
+      #ffffff 0%,
+      #ebebeb 35%,
+      #d1d1d1 65%,
+      #c2c2c2 100%);
+  box-shadow:
+    inset 0 2px 5px rgba(0, 0, 0, 0.25),
+    inset 0 1px 3px rgba(0, 0, 0, 0.35),
+    0 1px 0 rgba(255, 255, 255, 1);
+  transform: none;
+}
+
+/* Make primary CTA in hero section inset too */
+.hero-actions .cta {
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.25),
+    inset 0 1px 2px rgba(0, 0, 0, 0.4),
+    0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.hero-actions .cta:hover {
+  box-shadow:
+    inset 0 2px 5px rgba(0, 0, 0, 0.35),
+    inset 0 1px 3px rgba(0, 0, 0, 0.5),
+    0 1px 0 rgba(255, 255, 255, 1);
+  transform: none;
 }
 
 /* Buttons and Interactive Elements */
@@ -411,26 +485,31 @@ main {
   width: 44px;
   height: 44px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.1) 60%),
-    rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+    linear-gradient(to bottom,
+      #f5f5f5 0%,
+      #e0e0e0 49%,
+      #c4c4c4 51%,
+      #b5b5b5 100%);
   border-radius: 50%;
+  border: 1px solid #8e8e8e;
   box-shadow:
-    0 4px 16px rgba(var(--shadow-color), 0.1),
-    0 2px 6px rgba(var(--shadow-color), 0.08),
-    inset 0 1px 2px rgba(255, 255, 255, 0.4),
-    inset 0 -1px 2px rgba(0, 0, 0, 0.08);
+    0 2px 4px rgba(0, 0, 0, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon-btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
+  background:
+    linear-gradient(to bottom,
+      #ffffff 0%,
+      #ebebeb 49%,
+      #d1d1d1 51%,
+      #c2c2c2 100%);
   box-shadow:
-    0 8px 28px rgba(var(--shadow-color), 0.18),
-    0 4px 12px rgba(var(--shadow-color), 0.12),
-    inset 0 1px 2px rgba(255, 255, 255, 0.5),
-    inset 0 -1px 2px rgba(0, 0, 0, 0.1);
+    0 3px 6px rgba(0, 0, 0, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 1);
 }
 
 .icon-btn .icon-lg {
@@ -458,20 +537,18 @@ main {
 
 .project-card {
   position: relative;
-  background:
-    linear-gradient(180deg, rgba(var(--highlight-color), 0.6) 0%, transparent 40%),
-    linear-gradient(to bottom, var(--surface-overlay) 0%, var(--surface-raised) 100%);
+  background: #f4f4f4;
+  background-image: linear-gradient(to bottom, #fcfcfc 0%, #e8e8e8 100%);
   border-radius: var(--radius);
+  border: 1px solid #c2c2c2;
   padding: 1.2rem 1.2rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   min-height: 210px;
   box-shadow:
-    0 14px 48px rgba(var(--shadow-color), 0.14),
-    0 6px 18px rgba(var(--shadow-color), 0.1),
-    inset 0 2px 3px rgba(var(--highlight-color), 0.55),
-    inset 0 -2px 4px rgba(var(--shadow-color), 0.06);
+    0 4px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9);
   z-index: 999;
   box-sizing: border-box;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -479,45 +556,30 @@ main {
 
 .project-badge {
   position: absolute;
-  top: -0.5rem;
-  right: -0.5rem;
-  background: #e53935;
+  top: -0.6rem;
+  right: -0.6rem;
+  background:
+    linear-gradient(to bottom,
+      #ff7272 0%,
+      #e53935 35%,
+      #c62828 65%,
+      #b71c1c 100%);
   color: #fff;
   font-size: 0.75rem;
   font-weight: 700;
-  padding: 0.3em 0.7em;
-  border-radius: 0.5rem;
+  padding: 0.3em 0.8em;
+  border-radius: 12px;
+  border: 1px solid #7f0000;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   box-shadow:
-    0 2px 8px rgba(229, 57, 53, 0.4),
-    0 10px 24px rgba(229, 57, 53, 0.12),
-    0 22px 48px rgba(229, 57, 53, 0.06);
+    0 4px 6px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.7),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.6);
   z-index: 1000;
   user-select: none;
   -webkit-user-select: none;
-}
-
-/* Subtle radial glow under the badge */
-.project-badge::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: -12px;
-  width: 140%;
-  height: 32px;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(229, 57, 53, 0.28) 0%,
-    rgba(229, 57, 53, 0.12) 30%,
-    rgba(229, 57, 53, 0.04) 60%,
-    transparent 70%
-  );
-  filter: blur(12px);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 999; /* behind the badge but above the card */
 }
 
 .project-card h3 {
@@ -530,20 +592,16 @@ main {
   inset: 0;
   border-radius: var(--radius);
   pointer-events: none;
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.01) 100%
-  );
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .project-card:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow:
-    0 24px 64px rgba(var(--shadow-color), 0.2),
-    0 10px 28px rgba(var(--shadow-color), 0.14),
-    inset 0 2px 4px rgba(var(--highlight-color), 0.6),
-    inset 0 -2px 5px rgba(var(--shadow-color), 0.08);
+    0 12px 32px rgba(0, 0, 0, 0.25),
+    0 4px 12px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.12);
 }
 
 .card-spacer {
@@ -558,24 +616,50 @@ main {
 }
 
 .tags span {
-  background:
-    linear-gradient(180deg, rgba(var(--highlight-color), 0.1) 0%, transparent 50%),
-    var(--secondary);
-  color: var(--text);
+  background: linear-gradient(to bottom, #ededed 0%, #dcdcdc 100%);
+  color: #333;
   padding: 0.25em 0.85em;
-  border-radius: 1em;
+  border-radius: 8px;
   font-size: 0.89em;
   font-weight: 600;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
+  border: 1px solid #b3b3b3;
   box-shadow:
-    inset 0 1px 0 rgba(var(--highlight-color), 0.15),
-    inset 0 -1px 0 rgba(var(--shadow-color), 0.1),
-    0 1px 3px rgba(var(--shadow-color), 0.08);
+    inset 0 1px 1px rgba(255, 255, 255, 1),
+    0 1px 2px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  user-select: none;
 }
 
 /* In GitHub Button styles */
+.project-card .github-btn {
+  background:
+    linear-gradient(to bottom,
+      #86a5cc 0%,
+      #5f8bc2 35%,
+      #4175b5 65%,
+      #285e9e 100%);
+  border: 1px solid #234c82;
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.25),
+    inset 0 1px 2px rgba(0, 0, 0, 0.4),
+    0 1px 0 rgba(255, 255, 255, 0.8);
+  color: #fff;
+}
+
+.project-card .github-btn:hover {
+  background:
+    linear-gradient(to bottom,
+      #7293bb 0%,
+      #4b7bbb 35%,
+      #3167a8 65%,
+      #1b5191 100%);
+  box-shadow:
+    inset 0 2px 5px rgba(0, 0, 0, 0.35),
+    inset 0 1px 3px rgba(0, 0, 0, 0.5),
+    0 1px 0 rgba(255, 255, 255, 0.8);
+  transform: none;
+}
+
 .github-btn .icon-github {
   filter: brightness(0) invert(1) !important;
 }
@@ -590,7 +674,7 @@ main {
 
 .explore-all .cta {
   padding: 0.8em 1.5em;
-  border-radius: 3em;
+  border-radius: 8px;
 }
 
 /* Skills Section*/
@@ -609,64 +693,94 @@ main {
 }
 
 .skill-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5em;
-  padding: 1em;
-  min-height: 100px;
-  background:
-    linear-gradient(180deg, rgba(var(--highlight-color), 0.55) 0%, transparent 45%),
-    linear-gradient(to bottom, var(--surface-overlay) 0%, var(--surface-raised) 100%);
-  color: var(--text);
-  border-radius: var(--radius);
+  gap: 0.6em;
+  padding: 1.2em 1em;
+  min-height: 110px;
+  background: linear-gradient(to bottom, #eaeaea 0%, #c4c4c4 100%);
+  color: #222;
+  border-radius: 24px;
+  border: 1px solid #8e8e8e;
   box-shadow:
-    0 10px 32px rgba(var(--shadow-color), 0.1),
-    0 4px 12px rgba(var(--shadow-color), 0.07),
-    inset 0 2px 3px rgba(var(--highlight-color), 0.5),
-    inset 0 -2px 3px rgba(var(--shadow-color), 0.04);
+    0 4px 6px rgba(0, 0, 0, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.2);
   font-size: 0.9rem;
-  font-weight: 600;
-  transition: box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
-              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 700;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+/* Classic iOS 6 Icon Gloss Reflection */
+.skill-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 52%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border-radius: 24px 24px 60% 60% / 24px 24px 25% 25%;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .skill-card img {
-  width: 38px;
-  height: 38px;
+  width: 42px;
+  height: 42px;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.6));
+}
+
+.skill-card span {
+  position: relative;
+  z-index: 2;
 }
 
 .skill-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px) scale(1.02);
   box-shadow:
-    0 14px 40px 4px rgba(var(--skill-color), 0.4),
-    0 6px 16px rgba(var(--shadow-color), 0.12),
-    inset 0 2px 4px rgba(var(--highlight-color), 0.55),
-    inset 0 -2px 4px rgba(var(--shadow-color), 0.06);
+    0 8px 16px rgba(var(--skill-color), 0.4),
+    0 4px 8px rgba(0, 0, 0, 0.2),
+    inset 0 1px 2px rgba(255, 255, 255, 1),
+    inset 0 -2px 4px rgba(var(--skill-color), 0.3);
+  border-color: rgba(var(--skill-color), 0.8);
 }
 
 .skill-card[data-skill="html"] {
   --skill-color: var(--skill-html);
 }
+
 .skill-card[data-skill="docker"] {
   --skill-color: var(--skill-docker);
 }
+
 .skill-card[data-skill="firebase"] {
   --skill-color: var(--skill-firebase);
 }
+
 .skill-card[data-skill="flutter"] {
   --skill-color: var(--skill-flutter);
 }
+
 .skill-card[data-skill="tensorflow"] {
   --skill-color: var(--skill-tensorflow);
 }
+
 .skill-card[data-skill="actions"] {
   --skill-color: var(--skill-actions);
 }
+
 .skill-card[data-skill="python"] {
   --skill-color: var(--skill-python);
 }
+
 .skill-card[data-skill="shell"] {
   --skill-color: var(--skill-shell);
 }
@@ -679,17 +793,15 @@ main {
 
 .contact-card {
   position: relative;
-  background:
-    linear-gradient(180deg, rgba(var(--highlight-color), 0.6) 0%, transparent 40%),
-    linear-gradient(to bottom, var(--surface-overlay) 0%, var(--surface-raised) 100%);
-  border-radius: 2.5rem;
+  background: #f4f4f4;
+  background-image: linear-gradient(to bottom, #fcfcfc 0%, #e8e8e8 100%);
+  border-radius: 12px;
+  border: 1px solid #c2c2c2;
   padding: 3.5rem;
   overflow: hidden;
   box-shadow:
-    0 25px 80px rgba(var(--shadow-color), 0.12),
-    0 10px 30px rgba(var(--shadow-color), 0.08),
-    inset 0 2px 4px rgba(var(--highlight-color), 0.5),
-    inset 0 -2px 6px rgba(var(--shadow-color), 0.04);
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9);
 }
 
 .contact-inner {
@@ -703,16 +815,20 @@ main {
 
 .contact-label {
   display: inline-block;
-  background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.15), rgba(var(--accent-light-rgb), 0.1));
-  color: var(--accent);
+  background: linear-gradient(to bottom, #7aade2 0%, #3a6bc5 50%, #1e3c72 100%);
+  color: #fff;
   font-size: 0.85rem;
   font-weight: 700;
   padding: 0.5em 1.2em;
-  border-radius: 2em;
+  border-radius: 6px;
   margin-bottom: 1rem;
-  border: 1px solid rgba(var(--accent-rgb), 0.2);
+  border-bottom: 1px solid #142952;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
 }
 
 .contact-text h2 {
@@ -741,26 +857,35 @@ main {
   gap: 1rem;
   padding: 1.2rem 1.8rem;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, transparent 50%),
-    linear-gradient(to bottom right, rgba(var(--accent-rgb), 0.9) 0%, rgba(var(--accent-light-rgb), 0.8) 100%);
+    linear-gradient(to bottom,
+      #86a5cc 0%,
+      #5f8bc2 35%,
+      #4175b5 65%,
+      #285e9e 100%);
   color: #fff;
-  border-radius: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid #234c82;
   text-decoration: none;
   box-shadow:
-    0 10px 40px rgba(var(--accent-rgb), 0.3),
-    0 4px 12px rgba(0, 0, 0, 0.15),
-    inset 0 1px 2px rgba(255, 255, 255, 0.35),
-    inset 0 -1px 2px rgba(0, 0, 0, 0.15);
+    inset 0 2px 4px rgba(0, 0, 0, 0.25),
+    inset 0 1px 2px rgba(0, 0, 0, 0.4),
+    0 1px 0 rgba(255, 255, 255, 0.8);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contact-btn-large:hover {
-  transform: translateY(-4px) scale(1.02);
+  background:
+    linear-gradient(to bottom,
+      #7293bb 0%,
+      #4b7bbb 35%,
+      #3167a8 65%,
+      #1b5191 100%);
   box-shadow:
-    0 15px 50px rgba(var(--accent-rgb), 0.35),
-    0 8px 20px rgba(0, 0, 0, 0.2),
-    inset 0 1px 2px rgba(255, 255, 255, 0.4),
-    inset 0 -1px 2px rgba(0, 0, 0, 0.18);
+    inset 0 2px 5px rgba(0, 0, 0, 0.35),
+    inset 0 1px 3px rgba(0, 0, 0, 0.5),
+    0 1px 0 rgba(255, 255, 255, 0.8);
+  transform: none;
 }
 
 .contact-btn-icon {
@@ -789,6 +914,40 @@ main {
   font-size: 0.95rem;
 }
 
+.contact-socials .icon-btn {
+  background:
+    linear-gradient(to bottom,
+      #86a5cc 0%,
+      #5f8bc2 35%,
+      #4175b5 65%,
+      #285e9e 100%);
+  border: 1px solid #234c82;
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.25),
+    inset 0 1px 2px rgba(0, 0, 0, 0.4),
+    0 1px 0 rgba(255, 255, 255, 0.8);
+  color: #fff;
+  transform: none;
+}
+
+.contact-socials .icon-btn:hover {
+  background:
+    linear-gradient(to bottom,
+      #7293bb 0%,
+      #4b7bbb 35%,
+      #3167a8 65%,
+      #1b5191 100%);
+  box-shadow:
+    inset 0 2px 5px rgba(0, 0, 0, 0.35),
+    inset 0 1px 3px rgba(0, 0, 0, 0.5),
+    0 1px 0 rgba(255, 255, 255, 0.8);
+  transform: none;
+}
+
+.contact-socials .icon-btn img {
+  filter: brightness(0) invert(1);
+}
+
 /* Footer */
 footer {
   text-align: center;
@@ -798,166 +957,7 @@ footer {
   padding: 0 clamp(1rem, 5vw, 2.5rem);
 }
 
-/* Media Queries */
-@media (prefers-color-scheme: dark) {
-  .header {
-    background:
-      linear-gradient(180deg, rgba(var(--highlight-color), 0.12) 0%, transparent 50%),
-      linear-gradient(to bottom, var(--surface-overlay) 0%, var(--surface-raised) 100%);
-    box-shadow:
-      0 14px 50px rgba(var(--shadow-color), 0.5),
-      0 6px 18px rgba(var(--shadow-color), 0.4),
-      inset 0 2px 2px rgba(var(--highlight-color), 0.15),
-      inset 0 -2px 4px rgba(var(--shadow-color), 0.3);
-  }
 
-  .header:hover {
-    box-shadow:
-      0 16px 55px rgba(var(--shadow-color), 0.55),
-      0 8px 22px rgba(var(--shadow-color), 0.45),
-      inset 0 2px 2px rgba(var(--highlight-color), 0.18),
-      inset 0 -2px 4px rgba(var(--shadow-color), 0.35);
-  }
-
-  .header.shrunk {
-    box-shadow:
-      0 10px 36px rgba(var(--shadow-color), 0.45),
-      0 4px 14px rgba(var(--shadow-color), 0.35),
-      inset 0 2px 2px rgba(var(--highlight-color), 0.12),
-      inset 0 -2px 3px rgba(var(--shadow-color), 0.25);
-  }
-
-  .icon-btn {
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.03) 60%),
-      rgba(255, 255, 255, 0.08);
-    box-shadow:
-      0 4px 16px rgba(0, 0, 0, 0.3),
-      0 2px 6px rgba(0, 0, 0, 0.25),
-      inset 0 1px 2px rgba(255, 255, 255, 0.2),
-      inset 0 -1px 2px rgba(0, 0, 0, 0.2);
-  }
-
-  .cta-header {
-    border: 1px solid rgba(255, 255, 255, 0.15);
-  }
-
-  .cta:hover,
-  .cta-header:hover,
-  .contact-btn:hover {
-    box-shadow:
-      0 8px 28px rgba(var(--accent-rgb), 0.18),
-      0 0 14px 3px rgba(var(--accent-rgb), 0.22);
-    z-index: 2;
-  }
-
-  .icon-lg,
-  .icon-download,
-  .github-btn .icon-github,
-  .skill-card img,
-  .icon-btn .icon-lg {
-    filter: invert(1) brightness(1.1);
-  }
-
-  .nav .icon-github {
-    filter: invert(1) brightness(1.1) !important;
-  }
-
-  .project-card {
-    background:
-      linear-gradient(180deg, rgba(var(--highlight-color), 0.06) 0%, transparent 35%),
-      linear-gradient(to bottom, var(--surface-overlay) 0%, var(--surface-raised) 100%);
-    box-shadow:
-      0 16px 50px rgba(var(--shadow-color), 0.45),
-      0 6px 18px rgba(var(--shadow-color), 0.35),
-      inset 0 1px 2px rgba(var(--highlight-color), 0.08),
-      inset 0 -2px 4px rgba(var(--shadow-color), 0.2);
-  }
-
-  .project-card:hover {
-    box-shadow:
-      0 24px 64px rgba(var(--shadow-color), 0.55),
-      0 10px 28px rgba(var(--shadow-color), 0.4),
-      inset 0 1px 3px rgba(var(--highlight-color), 0.12),
-      inset 0 -2px 5px rgba(var(--shadow-color), 0.25);
-  }
-
-  .skill-card {
-    background:
-      linear-gradient(180deg, rgba(var(--highlight-color), 0.05) 0%, transparent 40%),
-      linear-gradient(to bottom, var(--surface-overlay) 0%, var(--surface-raised) 100%);
-    box-shadow:
-      0 12px 36px rgba(var(--shadow-color), 0.4),
-      0 4px 14px rgba(var(--shadow-color), 0.3),
-      inset 0 1px 2px rgba(var(--highlight-color), 0.07),
-      inset 0 -2px 3px rgba(var(--shadow-color), 0.15);
-  }
-
-  .skill-card:hover {
-    box-shadow:
-      0 16px 45px 4px rgba(var(--skill-color), 0.45),
-      0 6px 18px rgba(var(--shadow-color), 0.35),
-      inset 0 1px 3px rgba(var(--highlight-color), 0.1),
-      inset 0 -2px 4px rgba(var(--shadow-color), 0.18);
-  }
-
-  /* Slightly soften the badge glow in dark mode */
-  .project-badge::after {
-    background: radial-gradient(
-      ellipse at center,
-      rgba(229, 57, 53, 0.18) 0%,
-      rgba(229, 57, 53, 0.08) 30%,
-      rgba(229, 57, 53, 0.02) 60%,
-      transparent 70%
-    );
-    filter: blur(10px);
-  }
-
-  /* Hero dark mode adjustments */
-  .hero-card {
-    background:
-      linear-gradient(180deg, rgba(var(--highlight-color), 0.08) 0%, transparent 50%),
-      linear-gradient(to bottom, var(--surface-overlay) 0%, var(--surface-raised) 100%);
-    box-shadow:
-      0 30px 90px rgba(var(--shadow-color), 0.5),
-      0 12px 35px rgba(var(--shadow-color), 0.4),
-      inset 0 1px 2px rgba(var(--highlight-color), 0.12),
-      inset 0 -2px 6px rgba(var(--shadow-color), 0.25);
-  }
-
-  .hero-orb {
-    opacity: 0.35;
-  }
-
-  .cta-secondary {
-    border-color: rgba(var(--accent-rgb), 0.4);
-    color: var(--accent-light);
-  }
-
-  .cta-secondary:hover {
-    background: rgba(var(--accent-rgb), 0.15);
-  }
-
-  /* Contact dark mode adjustments */
-  .contact-card {
-    background:
-      linear-gradient(180deg, rgba(var(--highlight-color), 0.06) 0%, transparent 40%),
-      linear-gradient(to bottom, var(--surface-overlay) 0%, var(--surface-raised) 100%);
-    box-shadow:
-      0 30px 90px rgba(var(--shadow-color), 0.45),
-      0 12px 35px rgba(var(--shadow-color), 0.35),
-      inset 0 1px 2px rgba(var(--highlight-color), 0.08),
-      inset 0 -2px 6px rgba(var(--shadow-color), 0.2);
-  }
-
-  .contact-glow {
-    opacity: 0.4;
-  }
-
-  .contact-socials img {
-    filter: invert(1) brightness(1.1);
-  }
-}
 
 @media (max-width: 600px) {
 
@@ -968,7 +968,7 @@ footer {
   main {
     padding: 0 1rem 0.5rem;
   }
-  
+
   .hero {
     margin: 1.5rem auto 2rem auto;
     margin-top: calc(var(--header-h) + 4.5rem);
@@ -979,7 +979,7 @@ footer {
   @media (max-width: 600px) {
     .hero-card {
       padding: 1.8rem 1.8rem;
-      border-radius: 1.8rem;
+      border-radius: 12px;
       max-width: 100%;
       box-sizing: border-box;
       margin-left: 0.6rem;
@@ -988,8 +988,8 @@ footer {
   }
 
   .hero-card::before {
-    inset: -2px;
-    border-radius: calc(1.8rem + 2px);
+    inset: -1px;
+    border-radius: 13px;
   }
 
   .hero-badge {
@@ -1025,7 +1025,7 @@ footer {
     max-width: 100%;
     justify-content: center;
     box-sizing: border-box;
-    border-radius: 1.5rem;
+    border-radius: 8px;
   }
 
   .projects-section {
@@ -1049,7 +1049,9 @@ footer {
     scroll-snap-align: center;
     min-height: 280px;
     margin-right: 1rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    box-shadow:
+      0 3px 8px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7) !important;
     border-radius: var(--radius);
   }
 
@@ -1060,7 +1062,7 @@ footer {
 
   .contact-card {
     padding: 1.8rem 1.25rem;
-    border-radius: 1.8rem;
+    border-radius: 12px;
     max-width: 100%;
     box-sizing: border-box;
     margin-left: 0.6rem;
@@ -1090,7 +1092,7 @@ footer {
   .contact-btn-large {
     justify-content: start;
     padding: 1rem 2rem;
-    border-radius: 1.2rem;
+    border-radius: 8px;
   }
 
   .contact-btn-icon {
@@ -1122,51 +1124,52 @@ footer {
   }
 }
 
-@media (max-width: 600px), (hover: none) {
+@media (max-width: 600px),
+(hover: none) {
   .project-card {
     transition: none !important;
   }
+
   .project-card:hover {
     transform: none !important;
   }
 }
 
-@media (prefers-color-scheme: dark) and (max-width: 600px) {
-  .project-card {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
-  }
-  .project-card:hover {
-    transform: none !important;
-  }
-}
+
 
 @media (max-width: 690px) {
   .logo-full {
     display: none;
   }
+
   .logo-short {
     display: inline;
   }
+
   .cta-header {
     width: 44px;
     padding: 0 0;
     gap: 0;
   }
+
   .cta-header span {
     display: none;
   }
+
   .icon-download {
     margin: 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
     animation: none !important;
     transition: none !important;
   }
+
   html,
   body {
     scroll-behavior: auto !important;
