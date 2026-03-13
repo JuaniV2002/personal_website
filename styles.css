@@ -32,7 +32,7 @@
   --skill-actions: 32, 136, 255;
   --skill-html: 241, 101, 42;
   --skill-docker: 36, 150, 237;
-  --skill-firebase: 221, 44, 0;
+  --skill-supabase: 63, 207, 142;
   --skill-shell: 0, 200, 64;
 }
 
@@ -761,8 +761,8 @@ main {
   --skill-color: var(--skill-docker);
 }
 
-.skill-card[data-skill="firebase"] {
-  --skill-color: var(--skill-firebase);
+.skill-card[data-skill="supabase"] {
+  --skill-color: var(--skill-supabase);
 }
 
 .skill-card[data-skill="flutter"] {
