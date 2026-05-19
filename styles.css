@@ -58,20 +58,20 @@ h1, h2, h3, p { margin: 0; padding: 0; font-weight: normal; }
   line-height: 20px;
 }
 
-.wifi-icon {
-  display: inline-block;
-  width: 16px;
-  height: 12px;
-  vertical-align: -2px;
-  margin-right: 5px;
-}
-
 .status-carrier {
   display: inline-block;
   vertical-align: 0;
   font-size: 13px;
   font-weight: bold;
   letter-spacing: 0.01em;
+}
+
+.wifi-icon {
+  display: inline-block;
+  width: 15px;
+  height: 11px;
+  vertical-align: -1px;
+  margin-left: 5px;
 }
 
 .status-time {
@@ -98,12 +98,12 @@ h1, h2, h3, p { margin: 0; padding: 0; font-weight: normal; }
 
 .status-bat {
   display: inline-block;
-  width: 24px;
-  height: 11px;
+  width: 20px;
+  height: 8px;
   border: 1px solid #fff;
   border-radius: 2px;
   position: relative;
-  vertical-align: -2px;
+  vertical-align: -1px;
   padding: 1px;
 }
 .status-bat-cap {
@@ -116,10 +116,10 @@ h1, h2, h3, p { margin: 0; padding: 0; font-weight: normal; }
 .status-bat:after {
   content: "";
   position: absolute;
-  top: 3px;
-  right: -3px;
-  width: 2px;
-  height: 5px;
+  top: 2px;
+  right: -2px;
+  width: 1px;
+  height: 4px;
   background: #fff;
   border-radius: 0 1px 1px 0;
 }
@@ -347,13 +347,22 @@ a.row { color: #000; }
 .row-cell-right { padding-right: 16px; text-align: right; white-space: nowrap; }
 
 /* tall row (bio) */
-.row-tall { display: block; padding: 12px 16px; }
+.row-tall {
+  display: block;
+  padding: 14px 20px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 .row-bio  {
+  margin: 0;
+  padding: 0;
   font-size: 14px;
   line-height: 1.4;
   color: #1a1a1a;
   word-wrap: break-word;
-  -webkit-hyphens: auto;
+  overflow-wrap: break-word;
+  white-space: normal;
+  -webkit-hyphens: none;
 }
 
 /* labels and values */
@@ -510,6 +519,7 @@ a.row { color: #000; }
 .row-icon-github     .row-icon-glyph { -webkit-mask-image: url(assets/icons/github.svg); }
 .row-icon-linkedin   .row-icon-glyph { -webkit-mask-image: url(assets/icons/linkedin.svg); }
 .row-icon-download   .row-icon-glyph { -webkit-mask-image: url(assets/icons/download.svg); }
+.row-icon-php        .row-icon-glyph { -webkit-mask-image: url(assets/icons/php.svg); }
 
 /* ============== group footnote ============== */
 
@@ -519,7 +529,7 @@ a.row { color: #000; }
   color: #4c566e;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
 }
-.group-footnote a { color: #2a4a76; }
+.group-footnote a { color: #2a4a76; text-decoration: underline; }
 
 .footer {
   text-align: center;

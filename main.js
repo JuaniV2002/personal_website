@@ -10,9 +10,7 @@
 
   function render() {
     var d = new Date();
-    var h = d.getHours() % 12;
-    if (h === 0) h = 12;
-    timeEl.innerHTML = h + ':' + pad(d.getMinutes());
+    timeEl.innerHTML = pad(d.getHours()) + ':' + pad(d.getMinutes());
   }
 
   render();
