@@ -14,6 +14,45 @@
 </head>
 <body>
 
+  <!-- OS X Lion / Safari 6 window (desktop only chrome) -->
+  <div class="osx-window">
+    <div class="osx-titlebar">
+      <span class="traffic-light traffic-close"><span class="traffic-glyph">&times;</span></span>
+      <span class="traffic-light traffic-min"><span class="traffic-glyph">&minus;</span></span>
+      <span class="traffic-light traffic-max"><span class="traffic-glyph">+</span></span>
+      <span class="osx-title">juani.me</span>
+    </div>
+    <div class="osx-toolbar">
+      <div class="osx-nav-btns">
+        <span class="osx-nav-btn osx-nav-back"><span class="osx-chev osx-chev-left"></span></span>
+        <span class="osx-nav-btn osx-nav-fwd"><span class="osx-chev osx-chev-right"></span></span>
+      </div>
+      <div class="osx-urlbar">
+        <span class="osx-padlock">
+          <svg viewBox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3.4 6 V4.2 a2.6 2.6 0 0 1 5.2 0 V6" fill="none" stroke="#5a5a5a" stroke-width="1.2"/>
+            <rect x="2" y="6" width="8" height="6.5" rx="1.2" fill="#5a5a5a"/>
+            <circle cx="6" cy="9" r="0.9" fill="#fff"/>
+          </svg>
+        </span>
+        <span class="osx-url">juani.me</span>
+      </div>
+      <div class="osx-tools">
+        <span class="osx-tool osx-tool-share"></span>
+        <span class="osx-tool osx-tool-tabs"></span>
+      </div>
+    </div>
+    <div class="osx-stage">
+
+      <!-- iPhone device frame (full-screen on mobile, framed on desktop) -->
+      <div class="phone-frame">
+
+        <!-- speaker grille + camera (desktop only) -->
+        <div class="phone-speaker"></div>
+        <div class="phone-camera"></div>
+        <!-- home button (desktop only) -->
+        <div class="phone-home"></div>
+
   <!-- iOS 6 status bar (iPod Touch style) -->
   <div class="status-bar">
     <span class="status-left">
@@ -272,6 +311,10 @@
     <p class="footer">2026 Juani Villanueva</p>
 
   </div><!-- /.content -->
+
+      </div><!-- /.phone-frame -->
+    </div><!-- /.osx-stage -->
+  </div><!-- /.osx-window -->
 
 </body>
 </html>

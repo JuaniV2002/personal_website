@@ -13,3 +13,6 @@ build/
 
 # System junk
 Thumbs.db
+
+# Visual companion mockups
+.superpowers/

@@ -29,6 +29,15 @@ body {
   -webkit-touch-callout: none;
 }
 
+/* OS X / phone wrappers — transparent passthrough on mobile */
+.osx-window, .osx-stage, .phone-frame {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+}
+.osx-titlebar, .osx-toolbar, .phone-speaker, .phone-camera, .phone-home {
+  display: none;
+}
+
 a { color: #2a4a76; text-decoration: none; }
 h1, h2, h3, p { margin: 0; padding: 0; font-weight: normal; }
 
@@ -521,3 +530,321 @@ a.row { color: #000; }
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
   line-height: 1.5;
 }
+
+/* ====================================================================
+   Desktop layout (>= 1024px): wrap the iOS 6 page inside an OS X Lion
+   Safari 6 window, set against a dark linen wallpaper. The phone sits
+   inside the Safari content area as a black-bezel iPhone device.
+   ==================================================================== */
+
+@media (min-width: 1024px) {
+
+  html, body {
+    position: static;
+    overflow: visible;
+    height: auto;
+    min-height: 100%;
+  }
+
+  body {
+    background-color: #4a4a4a;
+    /* Linen weave — diagonal cross-hatch with subtle highlights */
+    background-image:
+      repeating-linear-gradient(45deg,
+        rgba(255, 255, 255, 0.04),
+        rgba(255, 255, 255, 0.04) 1px,
+        transparent 1px,
+        transparent 3px),
+      repeating-linear-gradient(-45deg,
+        rgba(0, 0, 0, 0.05),
+        rgba(0, 0, 0, 0.05) 1px,
+        transparent 1px,
+        transparent 3px);
+    padding: 50px 0 80px;
+  }
+
+  /* ---- OS X Window ---- */
+  .osx-window {
+    position: relative;
+    top: auto; left: auto; right: auto; bottom: auto;
+    width: 760px;
+    margin: 0 auto;
+    background: #d6d6d6;
+    border: 1px solid #2a2a2a;
+    border-radius: 6px 6px 0 0;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.4) inset,
+      0 25px 60px rgba(0, 0, 0, 0.55),
+      0 50px 100px rgba(0, 0, 0, 0.35);
+  }
+
+  /* ---- Title bar (brushed metal) ---- */
+  .osx-titlebar {
+    display: block;
+    position: relative;
+    height: 22px;
+    line-height: 22px;
+    background:
+      linear-gradient(180deg,
+        #ececec 0%,
+        #d8d8d8 48%,
+        #c8c8c8 52%,
+        #d0d0d0 100%);
+    border-bottom: 1px solid #6a6a6a;
+    border-radius: 5px 5px 0 0;
+    padding: 0 10px;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  /* ---- Traffic lights ---- */
+  .traffic-light {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    vertical-align: -2px;
+    margin-right: 4px;
+    border: 1px solid #555;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      inset 0 -1px 1px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+  .traffic-close {
+    background: linear-gradient(180deg, #ff8676 0%, #ec544c 50%, #d83b34 100%);
+    border-color: #a4322c;
+  }
+  .traffic-min {
+    background: linear-gradient(180deg, #ffd373 0%, #f1ad36 50%, #d2941a 100%);
+    border-color: #9c6d12;
+  }
+  .traffic-max {
+    background: linear-gradient(180deg, #6cef7a 0%, #2bbb40 50%, #1c9930 100%);
+    border-color: #167923;
+  }
+  .traffic-glyph {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 12px;
+    color: rgba(0, 0, 0, 0.55);
+    opacity: 0;
+    -webkit-transition: opacity 0.15s;
+    transition: opacity 0.15s;
+    font-family: -apple-system, "Helvetica Neue", sans-serif;
+  }
+  .osx-titlebar:hover .traffic-glyph { opacity: 1; }
+
+  /* ---- Title text ---- */
+  .osx-title {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "Lucida Grande", "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    color: #3a3a3a;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.01em;
+  }
+
+  /* ---- Toolbar (back/fwd + URL + tools) ---- */
+  .osx-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 38px;
+    background: linear-gradient(180deg, #d2d2d2 0%, #b0b0b0 100%);
+    border-bottom: 1px solid #5a5a5a;
+    padding: 0 12px;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.55),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+  }
+
+  .osx-nav-btns {
+    display: flex;
+  }
+  .osx-nav-btn {
+    width: 26px;
+    height: 22px;
+    background: linear-gradient(180deg, #f5f5f5 0%, #c4c4c4 100%);
+    border: 1px solid #6a6a6a;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.7),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.06);
+    position: relative;
+  }
+  .osx-nav-back { border-radius: 4px 0 0 4px; border-right: 0; }
+  .osx-nav-fwd  { border-radius: 0 4px 4px 0; opacity: 0.5; }
+
+  .osx-chev {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    border-top: 1.5px solid #4a4a4a;
+    border-left: 1.5px solid #4a4a4a;
+    margin: -4px 0 0 -1px;
+  }
+  .osx-chev-left  { transform: rotate(-45deg); }
+  .osx-chev-right { transform: rotate(135deg); margin: -2px 0 0 -5px; }
+
+  .osx-urlbar {
+    flex: 1;
+    height: 22px;
+    background: linear-gradient(180deg, #ffffff 0%, #ededed 100%);
+    border: 1px solid #7a7a7a;
+    border-radius: 11px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: "Lucida Grande", "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 12px;
+    color: #2a2a2a;
+    box-shadow:
+      inset 0 1px 2px rgba(0, 0, 0, 0.12),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+  }
+  .osx-padlock svg { display: block; width: 12px; height: 14px; vertical-align: middle; }
+  .osx-url { font-weight: 500; color: #1a1a1a; }
+
+  .osx-tools {
+    display: flex;
+    gap: 0;
+  }
+  .osx-tool {
+    display: inline-block;
+    width: 28px;
+    height: 22px;
+    background: linear-gradient(180deg, #f5f5f5 0%, #c4c4c4 100%);
+    border: 1px solid #6a6a6a;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.7),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.06);
+    position: relative;
+  }
+  .osx-tool-share { border-radius: 4px 0 0 4px; border-right: 0; }
+  .osx-tool-tabs  { border-radius: 0 4px 4px 0; }
+  /* tiny glyphs inside tool buttons */
+  .osx-tool-share:after {
+    content: "";
+    position: absolute;
+    top: 6px; left: 9px;
+    width: 8px; height: 10px;
+    border: 1.5px solid #4a4a4a;
+    border-bottom: 0;
+    border-radius: 1px 1px 0 0;
+  }
+  .osx-tool-tabs:after {
+    content: "";
+    position: absolute;
+    top: 6px; left: 8px;
+    width: 4px; height: 8px;
+    border: 1.5px solid #4a4a4a;
+    border-right: 0;
+    box-shadow: 6px 0 0 -1.5px #4a4a4a;
+  }
+
+  /* ---- Safari content area (the "stage") ---- */
+  .osx-stage {
+    position: relative;
+    top: auto; left: auto; right: auto; bottom: auto;
+    background: linear-gradient(180deg, #f4f4f4 0%, #d8d8d8 100%);
+    padding: 40px 0 50px;
+    overflow: visible;
+  }
+
+  /* ---- iPhone device frame ---- */
+  .phone-frame {
+    position: relative;
+    top: auto; left: auto; right: auto; bottom: auto;
+    width: 320px;
+    height: 568px;
+    margin: 0 auto;
+    background: #1a1a1a;
+    background:
+      linear-gradient(180deg, #2a2a2a 0%, #050505 100%);
+    border: 1px solid #000;
+    border-radius: 38px;
+    padding: 62px 14px;
+    box-sizing: content-box;
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.15),
+      inset 0 -1px 1px rgba(255, 255, 255, 0.05),
+      inset 0 0 0 2px #000,
+      0 6px 14px rgba(0, 0, 0, 0.45),
+      0 14px 30px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+
+  /* speaker grille at top */
+  .phone-speaker {
+    display: block;
+    position: absolute;
+    top: 22px;
+    left: 50%;
+    width: 56px;
+    height: 6px;
+    margin-left: -28px;
+    background: #0a0a0a;
+    border-radius: 3px;
+    box-shadow:
+      inset 0 1px 1px rgba(0, 0, 0, 0.7),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.04);
+  }
+  /* front-facing camera left of speaker */
+  .phone-camera {
+    display: block;
+    position: absolute;
+    top: 23px;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    margin-left: -52px;
+    background: #0c0c10;
+    border-radius: 50%;
+    box-shadow: inset 0 0 2px rgba(110, 130, 160, 0.5);
+  }
+  /* home button bottom */
+  .phone-home {
+    display: block;
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    width: 38px;
+    height: 38px;
+    margin-left: -19px;
+    background: linear-gradient(180deg, #2c2c2c 0%, #0a0a0a 100%);
+    border: 1px solid #000;
+    border-radius: 50%;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 1px rgba(0, 0, 0, 0.5);
+  }
+  .phone-home:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 14px;
+    margin: -7px 0 0 -7px;
+    border: 1.5px solid rgba(255, 255, 255, 0.45);
+    border-radius: 3px;
+  }
+
+  /* status-bar / nav-bar / content stay absolute inside the screen */
+  /* The screen content area = the inner padding box of .phone-frame.
+     Status bar at top:0, nav at top:20, content from top:64 to bottom:0. */
+}
+
