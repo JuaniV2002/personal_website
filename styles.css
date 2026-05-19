@@ -94,6 +94,7 @@ h1, h2, h3, p { margin: 0; padding: 0; font-weight: normal; }
 .status-pct {
   font-size: 12px;
   margin-right: 4px;
+  vertical-align: middle;
 }
 
 .status-bat {
@@ -103,7 +104,7 @@ h1, h2, h3, p { margin: 0; padding: 0; font-weight: normal; }
   border: 1px solid #fff;
   border-radius: 2px;
   position: relative;
-  vertical-align: 0;
+  vertical-align: middle;
   padding: 1px;
 }
 .status-bat-cap {
