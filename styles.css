@@ -58,40 +58,21 @@ h1, h2, h3, p { margin: 0; padding: 0; font-weight: normal; }
   line-height: 20px;
 }
 
-.signal-bar {
+.wifi-icon {
   display: inline-block;
-  width: 3px;
-  background: #fff;
-  margin-right: 1px;
-  vertical-align: -1px;
-  border-radius: 1px;
+  width: 16px;
+  height: 12px;
+  vertical-align: -2px;
+  margin-right: 5px;
 }
-.signal-bar-1 { height: 3px; }
-.signal-bar-2 { height: 5px; }
-.signal-bar-3 { height: 7px; }
-.signal-bar-4 { height: 9px; }
-.signal-bar-5 { height: 11px; }
 
-.status-wifi {
+.status-carrier {
   display: inline-block;
-  position: relative;
-  width: 14px;
-  height: 11px;
-  margin-left: 4px;
-  vertical-align: -1px;
+  vertical-align: 0;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 0.01em;
 }
-.wifi-arc {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  background: transparent;
-  border: 2px solid #fff;
-  border-radius: 50%;
-  border-color: #fff transparent transparent transparent;
-}
-.wifi-arc-1 { width: 4px;  height: 4px;  margin-left: -3px;  bottom: 0; }
-.wifi-arc-2 { width: 9px;  height: 9px;  margin-left: -5.5px; bottom: 0; opacity: 0.85; }
-.wifi-arc-3 { width: 14px; height: 14px; margin-left: -8px;  bottom: 0; opacity: 0.7; }
 
 .status-time {
   position: absolute;
@@ -362,12 +343,18 @@ a.row { color: #000; }
   vertical-align: middle;
   padding: 11px 0;
 }
-.row-cell-left  { padding-left: 14px; }
-.row-cell-right { padding-right: 14px; text-align: right; white-space: nowrap; }
+.row-cell-left  { padding-left: 14px; padding-right: 8px; }
+.row-cell-right { padding-right: 16px; text-align: right; white-space: nowrap; }
 
 /* tall row (bio) */
-.row-tall { display: block; padding: 12px 14px; }
-.row-bio  { font-size: 14px; line-height: 1.4; color: #1a1a1a; }
+.row-tall { display: block; padding: 12px 16px; }
+.row-bio  {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #1a1a1a;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+}
 
 /* labels and values */
 .row-label {

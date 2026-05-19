@@ -17,16 +17,12 @@
   <!-- iOS 6 status bar (iPod Touch style) -->
   <div class="status-bar">
     <span class="status-left">
-      <span class="signal-bar signal-bar-1"></span>
-      <span class="signal-bar signal-bar-2"></span>
-      <span class="signal-bar signal-bar-3"></span>
-      <span class="signal-bar signal-bar-4"></span>
-      <span class="signal-bar signal-bar-5"></span>
-      <span class="status-wifi">
-        <span class="wifi-arc wifi-arc-1"></span>
-        <span class="wifi-arc wifi-arc-2"></span>
-        <span class="wifi-arc wifi-arc-3"></span>
-      </span>
+      <svg class="wifi-icon" viewBox="0 0 16 12" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M8 11.2 L6.5 9.4 A2 2 0 0 1 9.5 9.4 Z" fill="#fff"/>
+        <path d="M3.6 6.3 A6 6 0 0 1 12.4 6.3 L10.6 8 A3.5 3.5 0 0 0 5.4 8 Z" fill="#fff"/>
+        <path d="M0.6 3.3 A11 11 0 0 1 15.4 3.3 L13.6 5 A8.4 8.4 0 0 0 2.4 5 Z" fill="#fff"/>
+      </svg>
+      <span class="status-carrier">Juani</span>
     </span>
     <span class="status-time" id="status-time">9:41</span>
     <span class="status-right">
@@ -67,10 +63,10 @@
           System analyst and CS student. I build with AI, machine learning, and full-stack web. Fast, reliable apps that actually work.
         </p>
       </div>
-      <div class="row">
+      <a class="row row-link" href="https://recrivals.com">
         <span class="row-cell row-cell-left"><span class="row-label">Status</span></span>
-        <span class="row-cell row-cell-right"><span class="row-value row-value-green">Available</span></span>
-      </div>
+        <span class="row-cell row-cell-right"><span class="row-value row-value-green">RecRivals</span><span class="chevron"></span></span>
+      </a>
       <div class="row">
         <span class="row-cell row-cell-left"><span class="row-label">Based in</span></span>
         <span class="row-cell row-cell-right"><span class="row-value">Argentina</span></span>
@@ -269,11 +265,11 @@
       </div>
       <div class="row">
         <span class="row-cell row-cell-left"><span class="row-label">Build</span></span>
-        <span class="row-cell row-cell-right"><span class="row-value">10B500</span></span>
+        <span class="row-cell row-cell-right"><span class="row-value" id="build-hash">c21b68</span></span>
       </div>
       <div class="row row-last">
         <span class="row-cell row-cell-left"><span class="row-label">Best on</span></span>
-        <span class="row-cell row-cell-right"><span class="row-value">iPod touch 5</span></span>
+        <span class="row-cell row-cell-right"><span class="row-value">A5 devices</span></span>
       </div>
     </div>
 
