@@ -489,7 +489,7 @@ a.row { color: #000; }
 
 /* color schemes per skill — iOS 6 settings-style colored squircles */
 .row-icon-python     { background: -webkit-gradient(linear, left top, left bottom, from(#3f74b8), to(#1d4a8a)); background: -webkit-linear-gradient(top, #3f74b8, #1d4a8a); }
-.row-icon-tensorflow { background: -webkit-gradient(linear, left top, left bottom, from(#ff9a3c), to(#cc5c00)); background: -webkit-linear-gradient(top, #ff9a3c, #cc5c00); }
+.row-icon-react      { background: -webkit-gradient(linear, left top, left bottom, from(#1f2935), to(#0d141f)); background: -webkit-linear-gradient(top, #1f2935, #0d141f); }
 .row-icon-flutter    { background: -webkit-gradient(linear, left top, left bottom, from(#54bfff), to(#1a78c4)); background: -webkit-linear-gradient(top, #54bfff, #1a78c4); }
 .row-icon-actions    { background: -webkit-gradient(linear, left top, left bottom, from(#444), to(#111));        background: -webkit-linear-gradient(top, #444, #111); }
 .row-icon-html       { background: -webkit-gradient(linear, left top, left bottom, from(#ff7a45), to(#c43a08)); background: -webkit-linear-gradient(top, #ff7a45, #c43a08); }
@@ -505,7 +505,7 @@ a.row { color: #000; }
 
 /* glyph mask images — pointed at existing SVG icons */
 .row-icon-python     .row-icon-glyph { -webkit-mask-image: url(assets/icons/python.svg); }
-.row-icon-tensorflow .row-icon-glyph { -webkit-mask-image: url(assets/icons/tensorflow.svg); }
+.row-icon-react      .row-icon-glyph { -webkit-mask-image: url(assets/icons/reactnative.svg); background: #61dafb; }
 .row-icon-flutter    .row-icon-glyph { -webkit-mask-image: url(assets/icons/flutter.svg); }
 .row-icon-actions    .row-icon-glyph { -webkit-mask-image: url(assets/icons/githubactions.svg); }
 .row-icon-html       .row-icon-glyph { -webkit-mask-image: url(assets/icons/html5.svg); }
