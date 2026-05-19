@@ -98,17 +98,17 @@ h1, h2, h3, p { margin: 0; padding: 0; font-weight: normal; }
 
 .status-bat {
   display: inline-block;
-  width: 20px;
-  height: 8px;
+  width: 25px;
+  height: 11px;
   border: 1px solid #fff;
   border-radius: 2px;
   position: relative;
-  vertical-align: -1px;
+  vertical-align: -2px;
   padding: 1px;
 }
 .status-bat-cap {
   display: block;
-  width: 100%;
+  width: 77%;
   height: 100%;
   background: #fff;
   border-radius: 1px;
@@ -116,10 +116,10 @@ h1, h2, h3, p { margin: 0; padding: 0; font-weight: normal; }
 .status-bat:after {
   content: "";
   position: absolute;
-  top: 2px;
-  right: -2px;
-  width: 1px;
-  height: 4px;
+  top: 3px;
+  right: -3px;
+  width: 2px;
+  height: 5px;
   background: #fff;
   border-radius: 0 1px 1px 0;
 }
@@ -255,16 +255,12 @@ h1, h2, h3, p { margin: 0; padding: 0; font-weight: normal; }
   background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.05));
 }
 
-.app-icon-letter {
-  position: relative;
-  z-index: 2;
+.app-icon-photo {
   display: block;
-  line-height: 72px;
-  color: #fff;
-  font-size: 30px;
-  font-weight: bold;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.45);
-  letter-spacing: -0.02em;
+  width: 72px;
+  height: 72px;
+  border: 0;
+  border-radius: 16px;
 }
 
 .profile-name {
