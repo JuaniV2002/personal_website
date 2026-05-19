@@ -1,42 +1,34 @@
-# Juani Villanueva – Personal website
+# juani.me — iOS 6 Edition
 
-![Lighthouse 100/100 Audit](assets/images/lighthouse_100_audit.jpg)
+A parallel build of [juani.me](https://juani.me) that **actually loads and works on a real iPhone 4/4S/5 running iOS 6.x** (Mobile Safari, WebKit 536.x, c. 2012).
 
-Welcome to my personal portfolio website!  
-This project showcases my journey as a Computer Science student and web developer, with a focus on responsiveness, tactile skeuomorphic design inspired by iOS 6, and a refined, user-centric experience.
+The modern site stays on `master`. This branch (`ios6`) is a hard fork — same content, rewritten in 2012-compatible HTML/CSS/JS, served over plain HTTP, styled to mimic a native iOS 6 Mobile Safari window with full OS chrome.
 
----
+## Why
 
-## Features
+The modern portfolio uses iOS 6 skeumorphic styling on top of CSS Grid, ES6, custom properties, and TLS 1.2+ — none of which an iOS 6 device can render or even handshake with. This branch is the logical conclusion: make the aesthetic literal.
 
-- **iOS 6-Inspired Skeuomorphic Design**  
-  Glossy multi-stop gradients, beveled edges, linen-weave textures, and engraved typography—every surface is crafted to feel physical and tactile, true to the classic Apple aesthetic.
+## Compatibility floor
 
-- **100% Responsive**  
-  Crafted from the ground up to look and work perfectly on any device—desktop, tablet, or mobile. No breakpoints left behind.
+| Layer | Constraint |
+|---|---|
+| HTML | HTML 4.01 / HTML5 doctype, no `<picture>`, no `<dialog>` |
+| CSS | CSS 2.1 + early CSS3 (`border-radius`, `box-shadow`, `text-shadow`, `-webkit-linear-gradient`, `-webkit-box` flexbox). No Grid, no modern flex, no `var()`, no `clamp()`. |
+| JS | ES5 only. `var`, function expressions, `addEventListener`, `XMLHttpRequest`. No `const`/`let`/arrow/`fetch`/`Promise`/template literals. |
+| Fonts | WOFF or TTF self-hosted. No WOFF2. |
+| Images | PNG / JPEG / GIF / SVG. No WebP, no AVIF. |
+| Transport | Plain HTTP. No TLS. |
 
-- **Consistent Design Language**  
-  Every element aligns to a strict system of spacing, corner radius, and typography—no jarring visual jumps, just smooth, predictable UX.
+## Dev loop
 
-- **Responsive Light/Dark Mode**  
-  Your eyes, your rules. The entire UI adapts seamlessly for light and dark preferences—automatically, with dark brushed-metal surfaces in dark mode.
+```sh
+python3 -m http.server 8080
+```
 
-- **Fluid Animations**  
-  Subtle, performant transitions and hover effects throughout—smooth card lifts, glossy button presses, and crisp bezel highlights.
+- Desktop iteration: Safari 6 desktop pointed at `http://localhost:8080`.
+- Real device: phone on same WiFi → `http://<dev-machine-lan-ip>:8080`.
+- Inspect via macOS Safari Develop menu (paired iOS 6 device with Web Inspector enabled).
 
-- **SEO & Accessibility First**  
-  - [x] **100/100 Lighthouse scores** (Performance, Accessibility, Best Practices, SEO)  
-  - ARIA labels and semantic HTML, to be usable by everyone.
-  - Open Graph & Twitter Card metadata for rich sharing.
+## Hosting
 
-- **Zero Frameworks**  
-  No React, Vue, or Svelte.  
-  Just pure, hand-crafted HTML, CSS, and JavaScript. Lean, portable, and fast.
-
----
-
-## Tech Stack
-
-- **HTML5** – Semantic, accessible structure.
-- **CSS3** – Modern layout (Grid, Flexbox), custom properties, skeuomorphic depth layering, linen textures, dark mode, responsive breakpoints.
-- **JavaScript (ES6+)** – Animations and interactivity.
+Deferred. When ready, ships to `ios6.juani.me` over plain HTTP. See `/Users/juani/.claude/plans/so-my-current-portfolio-mutable-fountain.md` for the full plan.

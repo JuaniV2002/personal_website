@@ -1,70 +1,27 @@
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* juani.me — iOS 6 Edition
+ * ES5 only. No const/let/arrow/template-literals/fetch/Promise.
+ */
 
-document.querySelectorAll('.hero .cta').forEach(btn => {
-  btn.addEventListener('click', e => {
-    e.preventDefault();
-    const options = prefersReducedMotion ? {} : { behavior: 'smooth' };
-    document.querySelector('#projects').scrollIntoView(options);
-  });
-});
+(function () {
+  var timeEl = document.getElementById('status-time');
+  if (!timeEl) return;
 
-const downloadBtn = document.querySelector('.cta-header');
-if (downloadBtn) {
-  downloadBtn.addEventListener('click', e => {
-    e.preventDefault();
-    if (prefersReducedMotion) {
-      window.location.href = downloadBtn.href;
-      return;
-    }
-    const shouldDownload = confirm('Do you want to download my CV?');
-    if (shouldDownload) {
-      window.location.href = downloadBtn.href;
-    }
-  });
-}
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
 
-/* ================================
-   Dynamic Header
-   ================================ */
+  function render() {
+    var d = new Date();
+    var h = d.getHours() % 12;
+    if (h === 0) h = 12;
+    timeEl.innerHTML = h + ':' + pad(d.getMinutes());
+  }
 
-const header = document.querySelector('.header');
-const isMobile = () => window.innerWidth <= 600;
+  render();
 
-if (header && !prefersReducedMotion) {
-  // Scroll shrink behavior (disabled on mobile)
-  let ticking = false;
-  const scrollThreshold = 50;
-
-  const updateHeader = () => {
-    // Don't shrink on mobile screens
-    if (isMobile()) {
-      header.classList.remove('shrunk');
-      ticking = false;
-      return;
-    }
-    
-    const currentScrollY = window.scrollY;
-    
-    if (currentScrollY > scrollThreshold) {
-      header.classList.add('shrunk');
-    } else {
-      header.classList.remove('shrunk');
-    }
-    
-    ticking = false;
-  };
-
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(updateHeader);
-      ticking = true;
-    }
-  }, { passive: true });
-
-  // Also check on resize
-  window.addEventListener('resize', () => {
-    if (isMobile()) {
-      header.classList.remove('shrunk');
-    }
-  }, { passive: true });
-}
+  // Tick at the top of every minute, then every 60s.
+  var now = new Date();
+  var msUntilNextMinute = (60 - now.getSeconds()) * 1000 - now.getMilliseconds();
+  setTimeout(function () {
+    render();
+    setInterval(render, 60 * 1000);
+  }, msUntilNextMinute);
+})();
