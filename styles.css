@@ -1,10 +1,13 @@
 /* juani.me — iOS 6 Edition
- * Compatibility floor: Mobile Safari (WebKit 536.x) on iOS 6.x.
- * No CSS Grid, no modern flex, no custom properties, no clamp/calc-with-vars.
- * Allowed: CSS 2.1 + early CSS3, -webkit-* prefixes, -webkit-gradient old syntax.
+ * Target: Mobile Safari (WebKit 536.x) on iOS 6.x (iPhone 4/4S/5, iPod Touch 4/5).
+ * Floor: HTML 4/5, CSS 2.1 + early CSS3, -webkit-* prefixes. No Grid, no modern flex, no var(), no clamp(),
+ * no calc with vars, no repeating-linear-gradient, no CSS filters, no css mask shorthand.
+ * Confirmed-OK on iOS 6: border-radius, box-shadow, text-shadow, -webkit-linear-gradient,
+ *   -webkit-gradient (legacy), -webkit-transform, -webkit-mask-image, display:table/table-cell,
+ *   data: URI background-image with PNG/SVG.
  */
 
-/* ------- reset ------- */
+/* ============== reset ============== */
 
 html, body {
   margin: 0;
@@ -17,57 +20,78 @@ body {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   overflow: hidden;
-  background: #c5ccd3;
+  background: #b2bccc;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 17px;
   color: #000;
   -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.15);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-touch-callout: none;
 }
 
-a {
-  color: #2a4a76;
-  text-decoration: none;
-}
+a { color: #2a4a76; text-decoration: none; }
+h1, h2, h3, p { margin: 0; padding: 0; font-weight: normal; }
 
-h1, h2, h3, p {
-  margin: 0;
-  padding: 0;
-  font-weight: normal;
-}
-
-/* ------- iOS 6 status bar ------- */
+/* ============== iOS 6 status bar ============== */
 
 .status-bar {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 20px;
   background: #000;
-  background: -webkit-gradient(linear, left top, left bottom, from(#2a2a2a), to(#000));
-  background: -webkit-linear-gradient(top, #2a2a2a, #000);
+  background: -webkit-gradient(linear, left top, left bottom, from(#2e2e2e), to(#000));
+  background: -webkit-linear-gradient(top, #2e2e2e, #000);
   color: #fff;
   font-size: 12px;
   font-weight: bold;
   line-height: 20px;
-  letter-spacing: 0.02em;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
-  z-index: 20;
+  z-index: 30;
   overflow: hidden;
 }
 
-.status-carrier {
+.status-left {
   position: absolute;
   top: 0;
   left: 6px;
+  height: 20px;
+  line-height: 20px;
 }
 
-.status-signal {
-  font-size: 10px;
-  letter-spacing: 1px;
-  margin-left: 4px;
-  color: #fff;
+.signal-bar {
+  display: inline-block;
+  width: 3px;
+  background: #fff;
+  margin-right: 1px;
+  vertical-align: -1px;
+  border-radius: 1px;
 }
+.signal-bar-1 { height: 3px; }
+.signal-bar-2 { height: 5px; }
+.signal-bar-3 { height: 7px; }
+.signal-bar-4 { height: 9px; }
+.signal-bar-5 { height: 11px; }
+
+.status-wifi {
+  display: inline-block;
+  position: relative;
+  width: 14px;
+  height: 11px;
+  margin-left: 4px;
+  vertical-align: -1px;
+}
+.wifi-arc {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  border-color: #fff transparent transparent transparent;
+}
+.wifi-arc-1 { width: 4px;  height: 4px;  margin-left: -3px;  bottom: 0; }
+.wifi-arc-2 { width: 9px;  height: 9px;  margin-left: -5.5px; bottom: 0; opacity: 0.85; }
+.wifi-arc-3 { width: 14px; height: 14px; margin-left: -8px;  bottom: 0; opacity: 0.7; }
 
 .status-time {
   position: absolute;
@@ -78,10 +102,12 @@ h1, h2, h3, p {
   text-align: center;
 }
 
-.status-battery {
+.status-right {
   position: absolute;
   top: 0;
   right: 6px;
+  height: 20px;
+  line-height: 20px;
 }
 
 .status-pct {
@@ -89,57 +115,58 @@ h1, h2, h3, p {
   margin-right: 4px;
 }
 
-.status-bat-icon {
+.status-bat {
   display: inline-block;
-  width: 22px;
-  height: 10px;
-  background: #fff;
-  position: relative;
-  vertical-align: middle;
-  margin-top: -2px;
+  width: 24px;
+  height: 11px;
   border: 1px solid #fff;
+  border-radius: 2px;
+  position: relative;
+  vertical-align: -2px;
+  padding: 1px;
+}
+.status-bat-cap {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #fff;
   border-radius: 1px;
 }
-
-.status-bat-icon:after {
+.status-bat:after {
   content: "";
   position: absolute;
-  top: 2px;
+  top: 3px;
   right: -3px;
   width: 2px;
-  height: 4px;
+  height: 5px;
   background: #fff;
+  border-radius: 0 1px 1px 0;
 }
 
-/* ------- iOS 6 navigation bar ------- */
+/* ============== iOS 6 navigation bar ============== */
 
 .nav-bar {
   position: absolute;
   top: 20px; left: 0; right: 0;
   height: 44px;
   background: #4a6a8e;
-  background: -webkit-gradient(linear,
-    left top, left bottom,
-    from(#7c93b3),
+  background: -webkit-gradient(linear, left top, left bottom,
+    from(#8aa1bd),
     color-stop(0.5, #4d6b8e),
-    color-stop(0.51, #3e5a7d),
-    to(#2a4368));
-  background: -webkit-linear-gradient(top,
-    #7c93b3 0%,
-    #4d6b8e 50%,
-    #3e5a7d 51%,
-    #2a4368 100%);
-  border-bottom: 1px solid #1a2c47;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
-  z-index: 19;
+    color-stop(0.5, #3a5778),
+    to(#264263));
+  background: -webkit-linear-gradient(top, #8aa1bd 0%, #4d6b8e 50%, #3a5778 50%, #264263 100%);
+  border-bottom: 1px solid #16263e;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  box-shadow:         inset 0 1px 0 rgba(255, 255, 255, 0.45), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  z-index: 20;
 }
 
 .nav-title {
   position: absolute;
   top: 0; left: 50%;
-  width: 200px;
-  margin-left: -100px;
+  width: 220px;
+  margin-left: -110px;
   height: 44px;
   line-height: 44px;
   text-align: center;
@@ -147,72 +174,53 @@ h1, h2, h3, p {
   font-size: 20px;
   font-weight: bold;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.55);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
-.nav-back {
+/* nav button base (used for back AND right action) */
+.nav-back, .nav-action {
   position: absolute;
   top: 7px;
-  left: 6px;
-  height: 30px;
-  line-height: 30px;
-  padding: 0 10px 0 18px;
+  height: 28px;
+  line-height: 28px;
+  padding: 0 10px;
   color: #fff;
   font-size: 12px;
   font-weight: bold;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.55);
   background: -webkit-gradient(linear, left top, left bottom,
-    from(#7c93b3), color-stop(0.5, #4d6b8e),
-    color-stop(0.51, #3e5a7d), to(#2a4368));
-  background: -webkit-linear-gradient(top, #7c93b3 0%, #4d6b8e 50%, #3e5a7d 51%, #2a4368 100%);
-  border: 1px solid #1a2c47;
+    from(#8aa1bd), color-stop(0.5, #4d6b8e),
+    color-stop(0.5, #3a5778), to(#264263));
+  background: -webkit-linear-gradient(top, #8aa1bd 0%, #4d6b8e 50%, #3a5778 50%, #264263 100%);
+  border: 1px solid #16263e;
   border-radius: 5px;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  box-shadow:         inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
-.nav-back:active {
+.nav-back  { left:  6px; padding-left: 22px; }
+.nav-action{ right: 6px; }
+
+.nav-back:active, .nav-action:active {
   background: -webkit-gradient(linear, left top, left bottom,
     from(#5d7494), to(#1f3252));
   background: -webkit-linear-gradient(top, #5d7494, #1f3252);
 }
 
+/* back chevron (CSS-rotated border) */
 .nav-back-chevron {
   position: absolute;
-  top: 0;
-  left: 4px;
-  font-size: 14px;
-  line-height: 30px;
+  top: 9px;
+  left: 8px;
+  width: 7px;
+  height: 7px;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
-.nav-action {
-  position: absolute;
-  top: 7px;
-  right: 6px;
-  height: 30px;
-  line-height: 30px;
-  padding: 0 12px;
-  color: #fff;
-  font-size: 12px;
-  font-weight: bold;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.55);
-  background: -webkit-gradient(linear, left top, left bottom,
-    from(#7c93b3), color-stop(0.5, #4d6b8e),
-    color-stop(0.51, #3e5a7d), to(#2a4368));
-  background: -webkit-linear-gradient(top, #7c93b3 0%, #4d6b8e 50%, #3e5a7d 51%, #2a4368 100%);
-  border: 1px solid #1a2c47;
-  border-radius: 5px;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
-}
-
-.nav-action:active {
-  background: -webkit-gradient(linear, left top, left bottom,
-    from(#5d7494), to(#1f3252));
-  background: -webkit-linear-gradient(top, #5d7494, #1f3252);
-}
-
-/* ------- scrolling content area ------- */
+/* ============== content scroll area ============== */
 
 .content {
   position: absolute;
@@ -220,90 +228,89 @@ h1, h2, h3, p {
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  background: #c5ccd3;
-  /* Faint hairline texture — replaced by linen.png in asset pass */
-  background-image: -webkit-gradient(linear, left top, left bottom,
-    from(#d3d9df), to(#bcc4ce));
-  background-image: -webkit-linear-gradient(top, #d3d9df, #bcc4ce);
+  background: #b2bccc;
+  /* Faint pinstripe via tiny tiled SVG */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='4' height='4'><rect width='4' height='4' fill='%23b2bccc'/><path d='M0 4 L4 0' stroke='%23000' stroke-opacity='0.05' stroke-width='1'/></svg>");
+  background-repeat: repeat;
 }
 
-/* ------- app header (squircle icon) ------- */
+/* ============== profile header ============== */
 
-.app-header {
+.profile-header {
   text-align: center;
-  padding: 20px 0 10px 0;
+  padding: 22px 0 12px 0;
 }
 
 .app-icon {
   display: inline-block;
-  width: 60px;
-  height: 60px;
-  border-radius: 13px;
-  background: #4a6fa8;
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
   background: -webkit-gradient(linear, left top, left bottom,
-    from(#6fa3e3), color-stop(0.5, #3e7ac9), color-stop(0.51, #2c66b8), to(#2056a5));
-  background: -webkit-linear-gradient(top, #6fa3e3 0%, #3e7ac9 50%, #2c66b8 51%, #2056a5 100%);
+    from(#7eb6f0), color-stop(0.5, #3a82d8),
+    color-stop(0.5, #2a6cc6), to(#1d54a8));
+  background: -webkit-linear-gradient(top, #7eb6f0 0%, #3a82d8 50%, #2a6cc6 50%, #1d54a8 100%);
   -webkit-box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
     inset 0 -1px 0 rgba(0, 0, 0, 0.2),
-    0 1px 2px rgba(0, 0, 0, 0.3);
+    0 2px 3px rgba(0, 0, 0, 0.3);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
     inset 0 -1px 0 rgba(0, 0, 0, 0.2),
-    0 1px 2px rgba(0, 0, 0, 0.3);
+    0 2px 3px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
 }
 
-/* glossy top half */
+/* iOS 6 squircle glossy reflection on top half */
 .app-icon:after {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 50%;
-  border-radius: 13px 13px 50% 50% / 13px 13px 100% 100%;
+  border-radius: 16px 16px 50% 50% / 16px 16px 100% 100%;
   background: -webkit-gradient(linear, left top, left bottom,
-    from(rgba(255, 255, 255, 0.45)), to(rgba(255, 255, 255, 0.05)));
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.05));
+    from(rgba(255, 255, 255, 0.5)), to(rgba(255, 255, 255, 0.05)));
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.05));
 }
 
 .app-icon-letter {
   position: relative;
   z-index: 2;
   display: block;
-  line-height: 60px;
+  line-height: 72px;
   color: #fff;
-  font-size: 26px;
+  font-size: 30px;
   font-weight: bold;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.45);
   letter-spacing: -0.02em;
 }
 
-.app-name {
-  margin-top: 8px;
-  font-size: 18px;
+.profile-name {
+  margin-top: 10px;
+  font-size: 19px;
   font-weight: bold;
   color: #000;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
-.app-subtitle {
+.profile-subtitle {
   font-size: 12px;
-  color: #6d6d72;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  color: #4c566e;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
   margin-top: 2px;
 }
 
-/* ------- grouped table view ------- */
+/* ============== grouped table view ============== */
 
 .group-label {
-  margin: 18px 0 6px 14px;
+  margin: 18px 0 6px 16px;
   font-size: 13px;
   font-weight: bold;
   color: #4c566e;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .group {
@@ -321,10 +328,8 @@ h1, h2, h3, p {
 }
 
 .row {
-  display: block;
-  position: relative;
-  min-height: 44px;
-  padding: 12px 30px 12px 14px;
+  display: table;
+  width: 100%;
   border-bottom: 1px solid #c8c7cc;
   background: -webkit-gradient(linear, left top, left bottom,
     from(#ffffff), to(#f5f5f7));
@@ -334,74 +339,72 @@ h1, h2, h3, p {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-.row-last {
-  border-bottom: 0;
-}
+.row-last { border-bottom: 0; }
+
+a.row { color: #000; }
 
 .row-link:active {
-  background: #c2def8;
   background: -webkit-gradient(linear, left top, left bottom,
     from(#5b9fea), to(#1d65cf));
   background: -webkit-linear-gradient(top, #5b9fea, #1d65cf);
   color: #fff;
 }
-
 .row-link:active .row-label,
-.row-link:active .row-detail,
 .row-link:active .row-value,
-.row-link:active .chevron {
-  color: #fff;
-}
+.row-link:active .row-name,
+.row-link:active .row-detail { color: #fff; }
+.row-link:active .chevron { border-color: #fff; }
+.row-link:active .row-badge { background: #fff; color: #1d65cf; text-shadow: none; }
 
-.row-link:active .row-badge {
-  background: #fff;
-  color: #1d65cf;
+/* cells */
+.row-cell {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 11px 0;
 }
+.row-cell-left  { padding-left: 14px; }
+.row-cell-right { padding-right: 14px; text-align: right; white-space: nowrap; }
 
-.row-tall {
-  padding: 14px 14px 14px 14px;
-}
+/* tall row (bio) */
+.row-tall { display: block; padding: 12px 14px; }
+.row-bio  { font-size: 14px; line-height: 1.4; color: #1a1a1a; }
 
-.row-bio {
-  font-size: 15px;
-  line-height: 1.35;
-  color: #1a1a1a;
-}
-
+/* labels and values */
 .row-label {
-  display: inline-block;
   font-size: 17px;
   color: #000;
   vertical-align: middle;
 }
-
 .row-value {
-  position: absolute;
-  right: 14px;
-  top: 50%;
-  margin-top: -10px;
   font-size: 15px;
   color: #8e8e93;
-  line-height: 20px;
+  vertical-align: middle;
 }
+.row-value-green { color: #2f7d32; font-weight: bold; }
+.row-value-mono  { font-family: "Courier New", Courier, monospace; font-size: 11px; }
 
-.row-value-green {
-  color: #2f7d32;
+/* stacked rows (project listing) */
+.row-stacked {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 200px;
+}
+.row-name {
+  display: block;
+  font-size: 16px;
+  color: #000;
   font-weight: bold;
+  line-height: 1.2;
 }
-
 .row-detail {
   display: block;
-  font-size: 12px;
+  font-size: 11px;
   color: #8e8e93;
   margin-top: 2px;
+  line-height: 1.2;
 }
 
-.row-detail-mono {
-  font-family: "Courier New", Courier, monospace;
-  font-size: 11px;
-}
-
+/* NEW badge */
 .row-badge {
   display: inline-block;
   background: -webkit-gradient(linear, left top, left bottom,
@@ -411,71 +414,131 @@ h1, h2, h3, p {
   font-size: 9px;
   font-weight: bold;
   letter-spacing: 0.06em;
-  padding: 2px 5px;
+  padding: 1px 5px 2px;
   border-radius: 3px;
-  margin-right: 6px;
-  vertical-align: 2px;
+  margin-right: 4px;
+  vertical-align: 1px;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
+/* CSS chevron (rotated border) */
 .chevron {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  margin-top: -9px;
-  font-size: 16px;
-  color: #c7c7cc;
-  line-height: 18px;
-  font-weight: bold;
-}
-
-/* ------- skill dots ------- */
-
-.row-skill .skill-dot {
   display: inline-block;
-  width: 20px;
-  height: 20px;
-  border-radius: 4px;
-  margin-right: 10px;
-  vertical-align: -5px;
-  -webkit-box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid #c7c7cc;
+  border-top:   2px solid #c7c7cc;
+  -webkit-transform: rotate(45deg);
+  transform:         rotate(45deg);
+  margin-left: 8px;
+  vertical-align: -1px;
 }
 
-.skill-python    { background: -webkit-gradient(linear, left top, left bottom, from(#ffe66c), to(#d4a800)); background: -webkit-linear-gradient(top, #ffe66c, #d4a800); }
-.skill-tensorflow{ background: -webkit-gradient(linear, left top, left bottom, from(#ffa040), to(#c44d00)); background: -webkit-linear-gradient(top, #ffa040, #c44d00); }
-.skill-flutter   { background: -webkit-gradient(linear, left top, left bottom, from(#6fb3e3), to(#1f6fa8)); background: -webkit-linear-gradient(top, #6fb3e3, #1f6fa8); }
-.skill-actions   { background: -webkit-gradient(linear, left top, left bottom, from(#6fa3ff), to(#1856c8)); background: -webkit-linear-gradient(top, #6fa3ff, #1856c8); }
-.skill-html      { background: -webkit-gradient(linear, left top, left bottom, from(#ff8e5c), to(#c84a1c)); background: -webkit-linear-gradient(top, #ff8e5c, #c84a1c); }
-.skill-docker    { background: -webkit-gradient(linear, left top, left bottom, from(#5cbbf0), to(#1873b8)); background: -webkit-linear-gradient(top, #5cbbf0, #1873b8); }
-.skill-supabase  { background: -webkit-gradient(linear, left top, left bottom, from(#7fdbb0), to(#1f8a4f)); background: -webkit-linear-gradient(top, #7fdbb0, #1f8a4f); }
-.skill-shell     { background: -webkit-gradient(linear, left top, left bottom, from(#5cd47a), to(#0a8a30)); background: -webkit-linear-gradient(top, #5cd47a, #0a8a30); }
+/* ============== row icons (squircle) ============== */
 
-/* ------- footnote and footer ------- */
+.row-icon {
+  display: inline-block;
+  width: 29px;
+  height: 29px;
+  border-radius: 6px;
+  position: relative;
+  margin-right: 10px;
+  vertical-align: middle;
+  -webkit-box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15),
+    0 1px 0 rgba(255, 255, 255, 0.5);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15),
+    0 1px 0 rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+}
+.row-icon:after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 50%;
+  border-radius: 6px 6px 50% 50% / 6px 6px 100% 100%;
+  background: -webkit-gradient(linear, left top, left bottom,
+    from(rgba(255, 255, 255, 0.35)), to(rgba(255, 255, 255, 0.03)));
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.03));
+  pointer-events: none;
+}
+
+/* white masked glyph */
+.row-icon-glyph {
+  position: absolute;
+  top: 5px; left: 5px;
+  width: 19px;
+  height: 19px;
+  background: #fff;
+  z-index: 1;
+  -webkit-mask-size: 19px 19px;
+  -webkit-mask-position: center center;
+  -webkit-mask-repeat: no-repeat;
+}
+
+/* text-glyph fallback for icons that aren't a tech logo */
+.row-icon-text {
+  background: transparent;
+  -webkit-mask: none;
+  mask: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 19px;
+  text-align: center;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.35);
+}
+
+/* color schemes per skill — iOS 6 settings-style colored squircles */
+.row-icon-python     { background: -webkit-gradient(linear, left top, left bottom, from(#3f74b8), to(#1d4a8a)); background: -webkit-linear-gradient(top, #3f74b8, #1d4a8a); }
+.row-icon-tensorflow { background: -webkit-gradient(linear, left top, left bottom, from(#ff9a3c), to(#cc5c00)); background: -webkit-linear-gradient(top, #ff9a3c, #cc5c00); }
+.row-icon-flutter    { background: -webkit-gradient(linear, left top, left bottom, from(#54bfff), to(#1a78c4)); background: -webkit-linear-gradient(top, #54bfff, #1a78c4); }
+.row-icon-actions    { background: -webkit-gradient(linear, left top, left bottom, from(#444), to(#111));        background: -webkit-linear-gradient(top, #444, #111); }
+.row-icon-html       { background: -webkit-gradient(linear, left top, left bottom, from(#ff7a45), to(#c43a08)); background: -webkit-linear-gradient(top, #ff7a45, #c43a08); }
+.row-icon-docker     { background: -webkit-gradient(linear, left top, left bottom, from(#4cb5ed), to(#0f5fa5)); background: -webkit-linear-gradient(top, #4cb5ed, #0f5fa5); }
+.row-icon-supabase   { background: -webkit-gradient(linear, left top, left bottom, from(#5fd49a), to(#0f8a4f)); background: -webkit-linear-gradient(top, #5fd49a, #0f8a4f); }
+.row-icon-shell      { background: -webkit-gradient(linear, left top, left bottom, from(#5f5f5f), to(#202020)); background: -webkit-linear-gradient(top, #5f5f5f, #202020); }
+.row-icon-mail       { background: -webkit-gradient(linear, left top, left bottom, from(#5db5ff), to(#1063c6)); background: -webkit-linear-gradient(top, #5db5ff, #1063c6); }
+.row-icon-github     { background: -webkit-gradient(linear, left top, left bottom, from(#5a5a5a), to(#1a1a1a)); background: -webkit-linear-gradient(top, #5a5a5a, #1a1a1a); }
+.row-icon-linkedin   { background: -webkit-gradient(linear, left top, left bottom, from(#3a8dd6), to(#0a4d80)); background: -webkit-linear-gradient(top, #3a8dd6, #0a4d80); }
+.row-icon-download   { background: -webkit-gradient(linear, left top, left bottom, from(#7dd35f), to(#2a8e2a)); background: -webkit-linear-gradient(top, #7dd35f, #2a8e2a); }
+.row-icon-c          { background: -webkit-gradient(linear, left top, left bottom, from(#7f6db5), to(#3c2d7d)); background: -webkit-linear-gradient(top, #7f6db5, #3c2d7d); }
+.row-icon-php        { background: -webkit-gradient(linear, left top, left bottom, from(#9c8fc9), to(#4a3f8e)); background: -webkit-linear-gradient(top, #9c8fc9, #4a3f8e); }
+
+/* glyph mask images — pointed at existing SVG icons */
+.row-icon-python     .row-icon-glyph { -webkit-mask-image: url(assets/icons/python.svg); }
+.row-icon-tensorflow .row-icon-glyph { -webkit-mask-image: url(assets/icons/tensorflow.svg); }
+.row-icon-flutter    .row-icon-glyph { -webkit-mask-image: url(assets/icons/flutter.svg); }
+.row-icon-actions    .row-icon-glyph { -webkit-mask-image: url(assets/icons/githubactions.svg); }
+.row-icon-html       .row-icon-glyph { -webkit-mask-image: url(assets/icons/html5.svg); }
+.row-icon-docker     .row-icon-glyph { -webkit-mask-image: url(assets/icons/docker.svg); }
+.row-icon-supabase   .row-icon-glyph { -webkit-mask-image: url(assets/icons/supabase.svg); }
+.row-icon-shell      .row-icon-glyph { -webkit-mask-image: url(assets/icons/gnubash.svg); }
+.row-icon-mail       .row-icon-glyph { -webkit-mask-image: url(assets/icons/mail.svg); }
+.row-icon-github     .row-icon-glyph { -webkit-mask-image: url(assets/icons/github.svg); }
+.row-icon-linkedin   .row-icon-glyph { -webkit-mask-image: url(assets/icons/linkedin.svg); }
+.row-icon-download   .row-icon-glyph { -webkit-mask-image: url(assets/icons/download.svg); }
+
+/* ============== group footnote ============== */
 
 .group-footnote {
-  margin: 8px 14px 0 14px;
-  font-size: 13px;
+  margin: 8px 16px 0 16px;
+  font-size: 12px;
   color: #4c566e;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
 }
-
-.group-footnote a {
-  color: #2a4a76;
-  text-decoration: none;
-}
+.group-footnote a { color: #2a4a76; }
 
 .footer {
   text-align: center;
   margin: 22px 0 30px 0;
   font-size: 11px;
   color: #6d6d72;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
   line-height: 1.5;
 }
